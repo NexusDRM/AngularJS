@@ -1,31 +1,30 @@
 'use strict';
+console.log("ng-fuck");
 
 var app = angular.module('nexusDRM', ['ngRoute']);
 
-app.config(function($stateProvider, $urlRouterProvider){
-	$stateProvider
-		.state('index', {
-			url:'/',
-			templateUrl: './public/views/index.html',
+app.config(['$routeProvider', function($routeProvider){
+	$routeProvider
+		.when("/", {
+			templateUrl: './public/index.html',
 			controller: 'indexController as IC'
 		})
-		.state('login', {
-			url: '/login',
-			templateUrl: './public/views/index.html',
+		.when('/login', {
+			templateUrl: './public/partials/login.html',
 			controller: 'loginController as LC'
 		})
-		.state('signup', {
-			url: '/signup',
-			templateUrl: './public/views/signup.html',
+		.when('/signup', {
+			templateUrl: './public/partials/signup.html',
 			controller: 'signupController as SC'
 		})
-		.state('donate', {
-			url: '/donate',
-			templateUrl: './public/views/donate.html',
+		.when('/donate', {
+			templateUrl: './public/partials/donate.html',
 			controller: 'donateController as DC'
+		})
+		.otherwise({
+			redirectTo: '/'
 		});
-		$urlRouterProvider.otherwise('/');
-		app.config(['$httpProvider', function($httpProvider){
-		  $httpProvider.interceptors.push('authInterceptor');
-		}]);
-})
+		// app.config(['$httpProvider', function($httpProvider){
+		//   $httpProvider.interceptors.push('authInterceptor');
+		// }]);
+}]);
