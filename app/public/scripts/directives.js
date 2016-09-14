@@ -9,8 +9,13 @@ app.directive('appHeader', function(){
 
 app.directive('appSubheader', function(){
 	return {
-		templateUrl: 'partials/_subheader.html',
-		controller: "HeaderController as HDC"
+		templateUrl: 'partials/_subheader.html'
+	};
+});
+
+app.directive('appBlurb', function(){
+	return {
+		templateUrl: 'partials/_blurb.html'
 	};
 });
 
