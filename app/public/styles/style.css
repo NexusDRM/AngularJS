@@ -1,16 +1,21 @@
 body {
 	font-family: 'Arimo', sans-serif;
+	overflow: scroll;
 }
 
-/*
-* header css rules
-*/
 
 .container{
 	height: 80px;
 	line-height: 34px;
-	width: 78%;
+	width: 85%;
 	margin-left: 11%
+}
+
+.container-fluid {
+	margin-top: 120px;
+	margin-bottom: 120px;
+	width: 80%;
+	margin-left: 11%;
 }
 
 #nav{
@@ -36,9 +41,7 @@ body {
 	margin-top: 20px;
 }
 
-/*
-* end header css rules
-*/
+
 
 .banner {
 	background-image: url("../nexusDRMassets/Nexus-Web-Banners-yellow.png");
@@ -51,9 +54,7 @@ body {
 }
 
 
-/*
-* footer css rules
-*/
+
 
 .footer {
 	width: 100%;
@@ -63,11 +64,9 @@ body {
   height: 53px;
 	line-height: 53px;
   background-color: #212121;
+
 }
 
-/*
-* end footer css rules
-*/
 
 .blurb-container {
 	width: 78%;
