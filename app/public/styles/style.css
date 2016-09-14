@@ -3,5 +3,30 @@ body {
 }
 
 .banner {
-	background-image: url('../../../nexusDRMassets/Nexus-Web-Banners-yellow.png');
+	background-image: url("../nexusDRMassets/Nexus-Web-Banners-yellow.png");
+	height:160px;
+	background-size: cover;
+}
+
+.pure-menu {
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+		height: 80px;
+		line-height: 80px;
+		margin-top: 20px;
+}
+
+.footer {
+	width: 100%;
+  position: fixed;
+  bottom: 0;
+	left: 0;
+  /* Set the fixed height of the footer here */
+  height: 53px;
+	line-height: 53px;
+  background-color: #212121;
+}
+
+.nav-container{
+	width: 80%;
+	margin-left: 10%;
 }

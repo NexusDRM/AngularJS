@@ -1,9 +1,8 @@
 'use strict';
-console.log("ng-fuck");
 
 var app = angular.module('nexusDRM', ['ngRoute']);
 
-app.config(['$routeProvider', function($routeProvider){
+app.config(['$routeProvider', function($routeProvider, $location, $routeParams){
 	$routeProvider
 		.when("/", {
 			templateUrl: './public/index.html',

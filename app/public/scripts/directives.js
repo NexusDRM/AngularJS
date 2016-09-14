@@ -2,20 +2,21 @@
 
 app.directive('appHeader', function(){
 	return {
-		templateUrl: './partials/_header.html',
+		templateUrl: 'partials/_header.html',
 		controller: "HeaderController as HDC"
 	};
 });
 
 app.directive('appSubheader', function(){
 	return {
-		templateUrl: './partials/_subheader.html',
+		templateUrl: 'partials/_subheader.html',
 		controller: "HeaderController as HDC"
 	};
 });
 
 app.directive('appFooter', function(){
 	return {
-		templateUrl: './partials/_footer.html'
+		templateUrl: 'partials/_footer.html',
+		controller: "FooterController as FC"
 	};
 });
