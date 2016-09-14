@@ -1,1 +1,27 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6">
+			<form class="" ng-submit="submit()" name="loginForm" novalidate>
 
+				<div class="form-group" ng-class="{ 'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine }">
+					<label>Email</label>
+					<input type="email" name="email" class="form-control" ng-model="user.email" required>
+					<p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">Please enter a valid email.</p>
+				</div>
+
+				<div class="form-group" ng-class="{ 'has-error' :  loginForm.password.$invalid && !loginForm.passworld.$pristine }">
+					<label>Password</label>
+					<input type="password" name="password" class="form-control" ng-model="user.password" ng-minlength="14" required>
+					<p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">
+						Please enter a valid password.
+					</p>
+
+				</div>
+				<button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid">Submit</button>
+			</form>
+
+		</div>
+
+	</div>
+
+</div>

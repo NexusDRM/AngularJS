@@ -4,11 +4,7 @@ var app = angular.module('nexusDRM', ['ngRoute']);
 
 app.config(['$routeProvider', function($routeProvider, $location, $routeParams){
 	$routeProvider
-		.when("/", {
-			templateUrl: './public/index.html',
-			controller: 'indexController as IC'
-		})
-		.when('/login', {
+		.when('/', {
 			templateUrl: './public/partials/login.html',
 			controller: 'loginController as LC'
 		})
@@ -23,7 +19,7 @@ app.config(['$routeProvider', function($routeProvider, $location, $routeParams){
 		.otherwise({
 			redirectTo: '/'
 		});
-		// app.config(['$httpProvider', function($httpProvider){
-		//   $httpProvider.interceptors.push('authInterceptor');
-		// }]);
+		app.config(['$httpProvider', function($httpProvider){
+		  $httpProvider.interceptors.push('authInterceptor');
+		}]);
 }]);
