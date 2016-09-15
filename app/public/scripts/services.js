@@ -1,16 +1,16 @@
 'use strict';
 
-app.service("PasswordService", ['$http', '$window', '$route', function($http, $window, $route){
+app.service("SignUpService", ['$http', '$window', '$route', function($http, $window, $route){
 	var sv = this;
 	//TODO: want to implement password checking
-	sv.check = function(password, password_confirm){
-		if(password === password_confirm){
-			return true;
-		} else {
-			return false;
-		}
-	};
-	sv.signup = function(email, password, title, firstName, lastName, suffix, street, city, state, postalCode, phone){
+	// sv.check = function(password, password_confirm){
+	// 	if(password === password_confirm){
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	}
+	// };
+	sv.signup = function(email, password, title, firstName, lastName, suffix, street, city, state, postalCode, phone, newsletterOptIn){
 		$http.post('homestead.app/api/auth/signup', {
 			  email: email,
         password: password,
@@ -22,7 +22,8 @@ app.service("PasswordService", ['$http', '$window', '$route', function($http, $w
 				city: city,
 				state: state,
 				postalCode: postalCode,
-				phone: phone
+				phone: phone,
+				newsletterOptIn: newsletterOptIn
       })
 			.then(function(response) {
         $window.localStorage.token = response.data.token;
@@ -32,6 +33,7 @@ app.service("PasswordService", ['$http', '$window', '$route', function($http, $w
 				throw new Error(err, 402);
       });
 	};
+
 }]);
 
 app.service("LoginService", ['$http', '$window', '$route', function($http, $window, $route){
