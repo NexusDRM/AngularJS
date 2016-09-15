@@ -13,12 +13,19 @@ app.controller('FooterController', ['$route', function($route){
 
 app.controller('loginController', function($http){
   var vm = this;
+  vm.pwchecked = function(pwcheck){
+
+  };
+  vm.pwcheck = PasswordService.check;
   //submit form after validations have been cleared
   vm.submit = function(){
-    //recheck isValid
-    if(vm.loginForm.$valid){
-      //$http post to server here
+    //compare pw fields
+    if(vm.pwchecked){
+      if(vm.loginForm.$valid){
+        LoginService.login();
+      }
     }
+
   };
 });
 

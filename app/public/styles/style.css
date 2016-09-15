@@ -3,7 +3,6 @@ body {
 	overflow: scroll;
 }
 
-
 .container{
 	height: 80px;
 	line-height: 34px;
@@ -12,7 +11,7 @@ body {
 }
 
 .container-fluid {
-	margin-top: 120px;
+	margin-top: 90px;
 	margin-bottom: 120px;
 	width: 80%;
 	margin-left: 11%;
@@ -41,8 +40,6 @@ body {
 	margin-top: 20px;
 }
 
-
-
 .banner {
 	background-image: url("../nexusDRMassets/Nexus-Web-Banners-yellow.png");
 	height:160px;
@@ -53,9 +50,6 @@ body {
 	line-height: 110px;
 }
 
-
-
-
 .footer {
 	width: 100%;
   position: fixed;
@@ -64,9 +58,7 @@ body {
   height: 53px;
 	line-height: 53px;
   background-color: #212121;
-
 }
-
 
 .blurb-container {
 	width: 78%;
@@ -75,4 +67,9 @@ body {
 	color: grey;
 	font-size: 14px;
 	line-height: 25px;
+}
+
+.login {
+	width: 50%;
+	margin-left: 25%;
 }
