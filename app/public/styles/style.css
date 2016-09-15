@@ -1,6 +1,7 @@
 body {
 	font-family: 'Arimo', sans-serif;
 	overflow: scroll;
+	color: grey;
 }
 
 .container{
@@ -11,7 +12,7 @@ body {
 }
 
 .container-fluid {
-	margin-top: 90px;
+	margin-top: 30px;
 	margin-bottom: 120px;
 	width: 80%;
 	margin-left: 11%;
@@ -72,4 +73,14 @@ body {
 .login {
 	width: 50%;
 	margin-left: 25%;
+}
+
+.signup-submit{
+	width: 50%;
+	margin-left: 25%;
+}
+
+.signup-phone {
+	width: 50%;
+	margin-left: 50%;
 }

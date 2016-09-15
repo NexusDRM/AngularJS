@@ -2,6 +2,7 @@
 
 app.service("PasswordService", ['$http', '$window', '$route', function($http, $window, $route){
 	var sv = this;
+	//TODO: want to implement password checking
 	sv.check = function(password, password_confirm){
 		if(password === password_confirm){
 			return true;
@@ -9,16 +10,19 @@ app.service("PasswordService", ['$http', '$window', '$route', function($http, $w
 			return false;
 		}
 	};
-	sv.signup = function(email, password, prefix, name, street, state, zip, phone){
-		$http.post('', {
+	sv.signup = function(email, password, title, firstName, lastName, suffix, street, city, state, postalCode, phone){
+		$http.post('homestead.app/api/auth/signup', {
 			  email: email,
         password: password,
-				prefix: prefix,
-				name: name,
+				title: title,
+				firstName: firstName,
+				lastName: lastName,
+				suffix: suffix,
 				street_address: street,
+				city: city,
 				state: state,
-				zip: zip,
-				phone_number: phone
+				postalCode: postalCode,
+				phone: phone
       })
 			.then(function(response) {
         $window.localStorage.token = response.data.token;

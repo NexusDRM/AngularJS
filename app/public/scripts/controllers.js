@@ -31,12 +31,7 @@ app.controller('loginController', function($http){
 
 app.controller('signupController', function($http){
   var vm=this;
-
-  vm.submit = function(){
-    if(vm.signupForm.$valid){
-      //$http post to server here
-    }
-  };
+  vm.form = {};
 });
 
 app.controller('donateController', function($http){

@@ -1,62 +1,74 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
-            <form class="" ng-submit="submit()" name="signupForm" novalidate>
-                <!-- email -->
-                <div class="form-group" ng-class="{ 'has-error' : signupForm.email.$invalid && !signupForm.email.$pristine }">
+					<h1>Sign Up</h1>
+					<h5>for communication from Nexus staff members, and to manage your donation preferences</h5>
+					<hr>
+            <form ng-submit="submit()" novalidate>
+							<div class="col-lg-6" id="signupLeft">
+								<h3>Required:</h3>
+								<!-- email -->
+                <div class="form-group" ng-class="{ 'has-error' : SC.email.$invalid && !SC.email.$pristine }">
                     <label>Email</label>
-                    <input type="email" name="email" class="form-control" ng-model="user.email" required>
-                    <p ng-show="signupForm.email.$invalid && !signupForm.email.$pristine" class="help-block">Please enter a valid email.</p>
+                    <input type="email" name="email" class="form-control" ng-model="SC.form.email" placeholder="someone@example.net - Required" required>
+                    <p ng-show="SC.email.$invalid && !SC.email.$pristine" class="help-block">Please enter a valid email.</p>
                 </div>
+
                 <!-- password -->
-                <div class="form-group" ng-class="{ 'has-error' :  signupForm.password.$invalid && !signupForm.passworld.$pristine }">
+                <div class="form-group" ng-class="{ 'has-error' :  SC.password.$invalid && !SC.passworld.$pristine }">
                     <label>Password</label>
-                    <input type="password" name="password" class="form-control" ng-model="signup.password" ng-minlength="14" required>
-                    <label>Repeat Password</label>
-                    <input type="password" name="password" class="form-control" ng-model="signup.password_confirm" ng-minlength="14" required>
-                    <p ng-show="signupForm.password.$invalid && !signupForm.password.$pristine" class="help-block">
+                    <input type="password" name="password" class="form-control" ng-model="SC.form.password" ng-minlength="14" placeholder="Password - min 14 characters - Required" required>
+                    <!-- <label>Repeat Password</label>
+                    <input type="password" name="password" class="form-control" ng-model="signup.password_confirm" ng-minlength="14" required> -->
+                    <p ng-show="SC.password.$invalid && !SC.password.$pristine" class="help-block">
                         Please enter a valid password at least 14 characters in length for security.
                     </p>
                 </div>
 
-                <!-- prefix -->
-                <div class="btn-group" ng-class="signupForm.prefix">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Prefix:
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li value="mr">Mr</li>
-                        <li value="mrs">Mrs</li>
-                        <li value="ms">Ms</li>
-                        <li value="miss">Miss</li>
-                    </ul>
-                </div>
-                <!-- name -->
-								<div class="form-group" ng-class="signupForm.name">
-									<input type="text" name="name" value="name">
+								<button type="submit" class="btn btn-success col-lg-12 signup-submit" ng-disabled="SC.$invalid">Submit</button>
+
+							</div>
+
+							<div class="col-lg-6" id="signupRight">
+								<h3>Optional:</h3>
+								<label>Name:</label>
+								<div class="form-group name col-lg-12">
+									<div class="form-group col-lg-3">
+										<input type="text" class="form-control" name="title" placeholder="Title" ng-model="SC.form.title">
+									</div>
+									<div class="form-group col-lg-9">
+										<input type="text" class="form-control" name="firstName" placeholder="First Name" ng-model="SC.form.firstName">
+									</div>
+									<div class="form-group col-lg-9">
+										<input type="text" class="form-control" name="lastName" placeholder="Last Name" ng-model="SC.form.lastName">
+									</div>
+									<div class="form-group col-lg-3">
+										<input type="text" class="form-control" name="suffix" placeholder="Suffix" ng-model="SC.form.suffix">
+									</div>
 								</div>
-								<!-- suffix -->
-								<div class="form-group" ng-class="signupForm.suffix">
-									<input type="text" name="suffix" value="suffix">
+
+								<div class="form-group addresss col-lg-12">
+									<label>Address:</label>
+									<div class="form-group col-lg-12">
+										<input type="text" class="form-control" name="street" placeholder="123 Remington St" ng-model="SC.form.streetAddress">
+									</div>
+									<div class="form-group col-lg-9">
+										<input type="text" class="form-control" name="city" placeholder="Fort Collins ">
+									</div>
+									<div class="form-group col-lg-3">
+										<input type="text" class="form-control" name="state" placeholder="CO " ng-model="SC.form.state">
+									</div>
+									<div class="form-group col-lg-4">
+										<input type="text" class="form-control" name="zip" placeholder="12345 " ng-model="SC.form.postalCode">
+									</div>
+									<div class="form-group col-lg-8">
+										<input type="text" class="form-control" name="phone" placeholder="555-555-5555 " ng-model="SC.form.phone">
+									</div>
 								</div>
-                <!-- street number -->
-								<div class="form-group" ng-class="signupForm.street_address">
-									<input type="text" name="street" value="street	">
-								</div>
-                <!-- state -->
-								<div class="form-group" ng-class="{ 'has.error' : signupForm.state.$invalid && !signupForm.state.$pristine }">
-									<input type="text" name="state" value="state" ng-model="signupForm.state" ng-pattern="\b\w{2}\b">
-								</div>
-                <!-- zip code -->
-								<div class="form-group" ng-class="{ 'has.error' : signupForm.zip.$invalid && !signupForm.state.$pristine }">
-									<input type="text" name="zip" value="zip" ng-model="signupForm.zip" ng-pattern="\b\d{5}\b">
-								</div>
-                <!-- phone -->
-								<div class="form-group" ng-class="{ 'has.error' : signupForm.phone.$invalid && !signupForm.phone.$pristine }">
-									<input type="button" name="name" value="">
-								</div>
-                <button type="submit" class="btn btn-primary" ng-disabled="signupForm.$invalid">Submit</button>
+
+
+
+							</div>
             </form>
         </div>
     </div>
