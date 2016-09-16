@@ -21,7 +21,6 @@ app.directive('appBlurb', function(){
 
 app.directive('appFooter', function(){
 	return {
-		templateUrl: 'partials/_footer.html',
-		controller: "footerController as FC"
+		templateUrl: 'partials/_footer.html'
 	};
 });

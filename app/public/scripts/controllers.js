@@ -15,10 +15,8 @@ app.controller('loginController', ['LoginService', function(LoginService){
   var vm = this;
   vm.form = {};
   //submit form after validations have been cleared
-  vm.submit = function(){
-      if(vm.loginForm.$valid){
+  vm.login = function(){
         LoginService.login(vm.form);
-      }
   };
 }]);
 
@@ -35,8 +33,7 @@ app.controller('signupController', ['SignUpService', function(SignUpService){
   };
 }]);
 
-app.controller('footerController', ['LogoutService', function(LogoutService){
+app.controller('donateController', ['LogoutService', function(LogoutService){
   var vm = this;
-  //console.log('stuff is happneing');
   vm.logOut = LogoutService.logOut;
 }]);

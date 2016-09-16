@@ -37,7 +37,7 @@ app.service("SignUpService", ['$http', '$window', function($http, $window){
 app.service("LoginService", ['$http', '$window', function($http, $window){
 	var sv = this;
 	sv.login = function(data){
-		$http.post('homestead.app/api/auth/login', {
+		$http.post('http://homestead.app/api/auth/login', {
 			email: data.email,
 			password: data.password
 		})
