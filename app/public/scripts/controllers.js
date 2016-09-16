@@ -13,25 +13,24 @@ app.controller('FooterController', ['$route', function($route){
 
 app.controller('loginController', ['LoginService', function(LoginService){
   var vm = this;
-  // vm.pwchecked = function(pwcheck){
-  //
-  // };
-  //vm.pwcheck = LoginService.check;
+  vm.form = {};
   //submit form after validations have been cleared
   vm.submit = function(){
-    //compare pw fields
       if(vm.loginForm.$valid){
-        LoginService.login();
+        LoginService.login(vm.form);
       }
   };
+}]);
+
+app.controller('logoutController', ['LogoutService', function(LogoutService){
+  var vm = this;
+  vm.logOut = LogoutService.logOut;
 }]);
 
 app.controller('signupController', ['SignUpService', function(SignUpService){
   var vm=this;
   vm.form = {};
   vm.signup = function(){
-    console.log('firing signup service call');
-    console.log('vmform', vm.form.email, vm.form.password);
     SignUpService.signup(vm.form);
   };
 }]);

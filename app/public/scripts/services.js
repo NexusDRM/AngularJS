@@ -3,17 +3,8 @@
 app.service("SignUpService", ['$http', '$window', function($http, $window){
 	var sv = this;
 	//TODO: want to implement password checking
-	// sv.check = function(password, password_confirm){
-	// 	if(password === password_confirm){
-	// 		return true;
-	// 	} else {
-	// 		return false;
-	// 	}
-	// };
-	sv.signup = function(form){
-		console.log('firing signup service.signup', form);
-		console.log(form.email);
 
+	sv.signup = function(form){
 		var data = JSON.stringify({
 			  email: form.email,
         password: form.password,
@@ -34,7 +25,7 @@ app.service("SignUpService", ['$http', '$window', function($http, $window){
 			.then(function(response) {
 				console.log(response);
         $window.localStorage.token = response.data.token;
-        // $route.go('/donate');
+        $window.location='donate';
       })
       .catch(function(err) {
 				throw new Error(err, 402);
@@ -45,17 +36,25 @@ app.service("SignUpService", ['$http', '$window', function($http, $window){
 
 app.service("LoginService", ['$http', '$window', function($http, $window){
 	var sv = this;
-	sv.login = function(email, password){
+	sv.login = function(data){
 		$http.post('homestead.app/api/auth/login', {
-			email: email,
-			password: password
+			email: data.email,
+			password: data.password
 		})
 		.then(function(response){
 			$window.localStorage.token = response.data.token;
-			// $route.go('/donate');
+			$window.location='donate';
 		})
 		.catch(function(err){
 			throw new Error(err, 402);
 		});
+	};
+}]);
+
+app.service('LogoutService', ['$window', function($window){
+	var sv = this;
+	sv.logout = function(){
+		delete $window.localStorage.token;
+		$window.location='/';
 	};
 }]);

@@ -21,6 +21,12 @@ app.config(['$routeProvider', function($routeProvider){
 		});
 }]);
 
+app.config(["$locationProvider",
+    function($locationProvider) {
+        $locationProvider.html5Mode(true);
+    }
+]);
+
 app.config(['$httpProvider', function($httpProvider){
 	$httpProvider.interceptors.push('authInterceptor');
 }]);
