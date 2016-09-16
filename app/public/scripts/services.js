@@ -53,8 +53,8 @@ app.service("LoginService", ['$http', '$window', function($http, $window){
 
 app.service('LogoutService', ['$window', function($window){
 	var sv = this;
-	sv.logout = function(){
-		delete $window.localStorage.token;
-		$window.location='/';
+	sv.logOut = function(){
+		delete($window.localStorage.token);
+		$window.location='logged-out';
 	};
 }]);

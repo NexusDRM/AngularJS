@@ -3,7 +3,7 @@
 app.directive('appHeader', function(){
 	return {
 		templateUrl: 'partials/_header.html',
-		controller: "HeaderController as HDC"
+		controller: "headerController as HDC"
 	};
 });
 
@@ -22,6 +22,6 @@ app.directive('appBlurb', function(){
 app.directive('appFooter', function(){
 	return {
 		templateUrl: 'partials/_footer.html',
-		controller: "FooterController as FC"
+		controller: "footerController as FC"
 	};
 });

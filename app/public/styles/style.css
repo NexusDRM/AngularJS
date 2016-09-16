@@ -29,6 +29,10 @@ body {
 	font-size: 14px;
 }
 
+a{
+	text-decoration: none;
+}
+
 #nav a {
 	text-decoration: none;
 }
@@ -84,4 +88,13 @@ body {
 .signup-phone {
 	width: 50%;
 	margin-left: 50%;
+}
+
+.footer-info{
+	width: 30%;
+	margin-left: 90%;
+}
+
+.btn-link{
+	line-height: 40px;
 }

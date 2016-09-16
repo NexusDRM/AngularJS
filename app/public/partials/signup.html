@@ -21,7 +21,7 @@
                     <div class="form-group" ng-class="{ 'has-error' :  SC.form.password.$invalid && !SC.form.password.$pristine }">
                         <label>Password</label>
                         <input type="password" name="password" class="form-control" ng-model="SC.form.password" ng-minlength="12" placeholder="Password - minimum 12 characters" required>
-                        <p ng-show="signupForm.assword.$invalid && !signupForm.password.$pristine" class="help-block">
+                        <p ng-show="signupForm.password.$invalid && !signupForm.password.$pristine" class="help-block">
                             Please enter a valid password at least 12 characters in length for security.
                         </p>
                     </div>

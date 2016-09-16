@@ -16,6 +16,9 @@ app.config(['$routeProvider', function($routeProvider){
 			templateUrl: 'partials/donate.html',
 			controller: 'donateController as DC'
 		})
+		.when('/logged-out', {
+			templateUrl: 'partials/loggedout.html'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

@@ -1,7 +1,7 @@
 'use strict';
 
 
-app.controller('HeaderController', ['$route', function($route){
+app.controller('headerController', ['$route', function($route){
   var vm = this;
 
 }]);
@@ -35,13 +35,8 @@ app.controller('signupController', ['SignUpService', function(SignUpService){
   };
 }]);
 
-
-// app.controller('donateController', function($http){
-//   var vm=this;
-//
-//   vm.submit = function(){
-//     if(vm.donateForm.$valid){
-//       //$http post to stripe here
-//     }
-//   };
-// });
+app.controller('footerController', ['LogoutService', function(LogoutService){
+  var vm = this;
+  //console.log('stuff is happneing');
+  vm.logOut = LogoutService.logOut;
+}]);
