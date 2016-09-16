@@ -1,6 +1,6 @@
 'use strict';
 
-app.service("SignUpService", ['$http', '$window', '$route', function($http, $window, $route){
+app.service("SignUpService", ['$http', '$window', function($http, $window){
 	var sv = this;
 	//TODO: want to implement password checking
 	// sv.check = function(password, password_confirm){
@@ -10,24 +10,27 @@ app.service("SignUpService", ['$http', '$window', '$route', function($http, $win
 	// 		return false;
 	// 	}
 	// };
-	sv.signup = function(email, password, title, firstName, lastName, suffix, street, city, state, postalCode, phone, newsletterOptIn){
-		$http.post('homestead.app/api/auth/signup', {
-			  email: email,
-        password: password,
-				title: title,
-				firstName: firstName,
-				lastName: lastName,
-				suffix: suffix,
-				street_address: street,
-				city: city,
-				state: state,
-				postalCode: postalCode,
-				phone: phone,
-				newsletterOptIn: newsletterOptIn
+	sv.signup = function(form){
+		console.log('firing signup service.signup', form);
+		console.log(form.email);
+		$http.post('http://homestead.app/api/auth/signup', {
+			  email: form.email,
+        password: form.password,
+				title: form.title || null,
+				firstName: form.firstName || null,
+				lastName: form.lastName || null,
+				suffix: form.suffix || null,
+				street_address: form.street || null,
+				city: form.city || null,
+				state: form.state || null,
+				postalCode: form.postalCode || null,
+				phone: form.phone || null,
+				newsletterOptIn: form.newsletterOptIn || null
       })
 			.then(function(response) {
+				console.log(response);
         $window.localStorage.token = response.data.token;
-        $route.go('/donate');
+        // $route.go('/donate');
       })
       .catch(function(err) {
 				throw new Error(err, 402);
@@ -36,16 +39,16 @@ app.service("SignUpService", ['$http', '$window', '$route', function($http, $win
 
 }]);
 
-app.service("LoginService", ['$http', '$window', '$route', function($http, $window, $route){
+app.service("LoginService", ['$http', '$window', function($http, $window){
 	var sv = this;
 	sv.login = function(email, password){
-		$http.post('homestead.app/login', {
+		$http.post('homestead.app/api/auth/login', {
 			email: email,
 			password: password
 		})
 		.then(function(response){
 			$window.localStorage.token = response.data.token;
-			$route.go('/donate');
+			// $route.go('/donate');
 		})
 		.catch(function(err){
 			throw new Error(err, 402);

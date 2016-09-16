@@ -29,7 +29,11 @@ app.controller('loginController', ['LoginService', function(LoginService){
 app.controller('signupController', ['SignUpService', function(SignUpService){
   var vm=this;
   vm.form = {};
-  vm.signup = SignUpService.signup;
+  vm.signup = function(){
+    console.log('firing signup service call');
+    console.log('vmform', vm.form.email, vm.form.password);
+    SignUpService.signup(vm.form);
+  };
 }]);
 
 

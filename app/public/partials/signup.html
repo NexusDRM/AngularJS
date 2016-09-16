@@ -4,24 +4,24 @@
             <h1>Sign Up</h1>
             <h5>for communication from Nexus staff members, and to manage your donation preferences</h5>
             <hr>
-            <form ng-submit="submit()" novalidate>
+            <form name="signupForm" ng-submit="submit()" novalidate>
                 <div class="col-lg-6" id="signupLeft">
                     <h3>Required:</h3>
                     <!-- email -->
-                    <div class="form-group" ng-class="{ 'has-error' : SC.email.$invalid && !SC.email.$pristine }">
+                    <div class="form-group" ng-class="{ 'has-error' : SC.form.email.$invalid && !SC.form.email.$pristine }">
                         <label>Email</label>
                         <input type="email" name="email" class="form-control" ng-model="SC.form.email" placeholder="someone@example.net" required>
-                        <p ng-show="SC.email.$invalid && !SC.email.$pristine" class="help-block">Please enter a valid email.</p>
+                        <p ng-show="email.$invalid && !email.$pristine" class="help-block">
+													Please enter a valid email.
+												</p>
                     </div>
 
                     <!-- password -->
-                    <div class="form-group" ng-class="{ 'has-error' :  SC.password.$invalid && !SC.passworld.$pristine }">
+                    <div class="form-group" ng-class="{ 'has-error' :  SC.form.password.$invalid && !SC.form.password.$pristine }">
                         <label>Password</label>
                         <input type="password" name="password" class="form-control" ng-model="SC.form.password" ng-minlength="12" placeholder="Password - minimum 12 characters" required>
-                        <!-- <label>Repeat Password</label>
-                    <input type="password" name="password" class="form-control" ng-model="signup.password_confirm" ng-minlength="14" required> -->
-                        <p ng-show="SC.password.$invalid && !SC.password.$pristine" class="help-block">
-                            Please enter a valid password at least 14 characters in length for security.
+                        <p ng-show="password.$invalid && !password.$pristine" class="help-block">
+                            Please enter a valid password at least 12 characters in length for security.
                         </p>
                     </div>
 
@@ -32,7 +32,7 @@
                         </label>
                     </div>
 
-                    <button type="submit" class="btn btn-success col-lg-12 signup-submit" ng-disabled="SC.$invalid" ng-click="SC.signup()">Submit</button>
+                    <button type="submit" class="btn btn-success col-lg-12 signup-submit" ng-disabled="signupForm.$invalid" ng-click="SC.signup()">Submit</button>
 
                 </div>
 
