@@ -11,7 +11,7 @@
                     <div class="form-group" ng-class="{ 'has-error' : SC.form.email.$invalid && !SC.form.email.$pristine }">
                         <label>Email</label>
                         <input type="email" name="email" class="form-control" ng-model="SC.form.email" placeholder="someone@example.net" required>
-                        <p ng-show="email.$invalid && !email.$pristine" class="help-block">
+                        <p ng-show="signupForm.email.$invalid && !signupForm.email.$pristine" class="help-block">
 													Please enter a valid email.
 												</p>
                     </div>
@@ -20,7 +20,7 @@
                     <div class="form-group" ng-class="{ 'has-error' :  SC.form.password.$invalid && !SC.form.password.$pristine }">
                         <label>Password</label>
                         <input type="password" name="password" class="form-control" ng-model="SC.form.password" ng-minlength="12" placeholder="Password - minimum 12 characters" required>
-                        <p ng-show="password.$invalid && !password.$pristine" class="help-block">
+                        <p ng-show="signupForm.assword.$invalid && !signupForm.password.$pristine" class="help-block">
                             Please enter a valid password at least 12 characters in length for security.
                         </p>
                     </div>
