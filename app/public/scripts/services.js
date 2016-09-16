@@ -13,7 +13,8 @@ app.service("SignUpService", ['$http', '$window', function($http, $window){
 	sv.signup = function(form){
 		console.log('firing signup service.signup', form);
 		console.log(form.email);
-		$http.post('http://homestead.app/api/auth/signup', {
+
+		var data = JSON.stringify({
 			  email: form.email,
         password: form.password,
 				title: form.title || null,
@@ -26,7 +27,10 @@ app.service("SignUpService", ['$http', '$window', function($http, $window){
 				postalCode: form.postalCode || null,
 				phone: form.phone || null,
 				newsletterOptIn: form.newsletterOptIn || null
-      })
+      });
+			console.log(data);
+
+		$http.post('http://homestead.app/api/auth/signup', data)
 			.then(function(response) {
 				console.log(response);
         $window.localStorage.token = response.data.token;
