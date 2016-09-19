@@ -12,7 +12,7 @@ app.factory('authInterceptor', ['$q', '$window', function($q, $window){
     response: function(response){
       if(response.status===401){
         delete $window.localStorage.token;
-        $window.path('/login');
+        $window.path('/');
       }
       return response || $q.when(response);
     }

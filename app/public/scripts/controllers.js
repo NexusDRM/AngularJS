@@ -33,7 +33,11 @@ app.controller('signupController', ['SignUpService', function(SignUpService){
   };
 }]);
 
-app.controller('donateController', ['LogoutService', function(LogoutService){
+app.controller('donateController', ['$location','$window','LogoutService', function($location,$window, LogoutService){
   var vm = this;
   vm.logOut = LogoutService.logOut;
+  //if user is not logged in we want them to be so this redirs to login
+  if(!$window.localStorage.token){
+    $location.path('/');
+  }
 }]);
