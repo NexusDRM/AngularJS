@@ -3,27 +3,37 @@
 
 <div class="container-fluid" ng-controller="donateController as DC">
 	<form name="paymentForm" ng-submit="submit()" novalidate>
-		<div class="panel panel-default col-lg-6">
+		<div class="panel panel-default col-lg-6" >
 			<div class="col-xs-12">
 				<h3>Donate by Credit Card</h3>
         <hr>
-				<div class="form-group col-xs-8">
+				<div class="form-group col-xs-6" ng-class="{ 'has-error' :  DC.form.cardNumber.$invalid && !DC.form.cardNumber.$pristine }">
 					<label>Card Number</label>
-					<input type="text" class="form-control" ng-model="DC.form.cardNumber">
+					<input type="text" class="form-control" name="cardNumber" ng-model="DC.form.cardNumber" ng-minlength="16" ng-maxlength="16">
+					<p ng-show="paymentForm.cardNumber.$invalid && !paymentForm.cardNumber.$pristine" class="help-block">
+							Please enter a valid card number
+					</p>
 				</div>
-				<div class="form-group col-xs-4">
+				<div class="form-group col-xs-6">
 					<label>Expiration</label>
-					<input type="text" class="form-control" ng-model="DC.form.cardExpire">
+					<input type="month" class="form-control" ng-model="DC.form.cardExpire">
 				</div>
 			</div>
+
 			<div class="col-xs-12">
 				<div class="form-group col-xs-6">
 					<label>Security Code</label>
-					<input type="text" class="form-control" ng-model="DC.form.cardCVV">
+					<input type="text" class="form-control" name="cvv" ng-model="DC.form.cardCVV" ng-minlength="3" ng-maxlength="3">
+					<p ng-show="paymentForm.cvv.$invalid && !paymentForm.cvv.$pristine" class="help-block">
+						Please enter a valid CVV
+					</p>
 				</div>
 				<div class="form-group col-xs-6">
 					<label>Zip Code</label>
-					<input type="text" class="form-control" ng-model="DC.form.cardZip">
+					<input type="text" class="form-control" name="zip" ng-model="DC.form.zip" ng-minlength="5" ng-maxlength="5">
+					<p ng-show="paymentForm.zip.$invalid && !paymentForm.zip.$pristine" class="help-block">
+						Please enter a valid zip code
+					</p>
 				</div>
 			</div>
 		</div>
@@ -31,6 +41,13 @@
     <div class="panel panel-default col-lg-6">
         <h3>Options:</h3>
         <hr>
+				<div ng-class="{ 'has-error' : 'DC.form.amount.$invalid && !DC.form.amount.$pristine'}">
+					<label>Amount:</label>
+					<input type="currency" name="amount" ng-model="DC.form.amount" placeholder="25.00" ng-init="setAmount = false" ng-click="setAmount = !setAmount">
+					<p ng-show="paymentForm.amount.$invalid && !paymentForm.amount.$pristine">
+						Please enter a valid amount
+					</p>
+				</div>
         <div class="checkbox" ng-hide="quarterlyPayOptIn || annualPayOptIn">
             <label>
                 <input type="checkbox" ng-init="monthlyPayOptIn = false" ng-model="DC.form.monthlyPayOptIn" ng-click="monthlyPayOptIn = !monthlyPayOptIn" >
@@ -75,18 +92,21 @@
 						<p ng-show="setFutureDate">
 							Payment will process on: {{DC.futureDate}}
 						</p>
+						<p ng-show="setAmount">
+							Payment will process for the amount of {{DC.form.amount | currency}}
+						</p>
 					</div>
 				</div>
     </div>
 	</form>
 
 
-    <button value="submit" id="submit" class="btn btn-success btn-lg col-lg-12" ng-disabled="paymentForm.$invalid">Pay with
+    <button value="submit" id="submit" class="btn btn-success btn-lg col-lg-12" ng-disabled="paymentForm.$invalid && paymentForm.$pristine" ng-click="DC.processPayment()">Pay with
         <span id="card-type">Card</span>
     </button>
 
 		<div class="footer-info col-lg-12">
 		    <button type="button" class="btn btn-link" name="button" ng-click="DC.logOut()">Log Out</button>
 		</div>
-<!-- end of main div -->
+
 </div>

@@ -33,16 +33,14 @@ app.controller('signupController', ['SignUpService', function(SignUpService){
   };
 }]);
 
-app.controller('donateController', ['$location','$window','LogoutService',/*'DonateService',*/ function($location, $window, LogoutService/*, DonateService*/){
+app.controller('donateController', ['$location','$window','LogoutService', 'DonateService', function($location, $window, LogoutService, DonateService){
   var vm = this;
   vm.form = {};
-  // vm.cc.number = '';
-  // vm.cc.expiration = '';
   vm.currentDate = Date.now();
   vm.maxFutureDate = new Date();
   vm.maxFutureDate.setDate(vm.maxFutureDate.getDate() + 30);
   vm.futureDate = $window.setFutureDate;
-  // vm.processPayment = DonateService.process(vm.cc.number, vm.cc.expiration);
+  vm.processPayment = DonateService.process(vm.form);
   vm.logOut = LogoutService.logOut;
   //if user is not logged in we want them to be so this redirs to login
   if(!$window.localStorage.token){

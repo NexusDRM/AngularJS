@@ -59,32 +59,40 @@ app.service('LogoutService', ['$window', function($window){
 	};
 }]);
 
-// app.service('DonateService', ['$window', '$braintree', function($window, $braintree){
-// 	var sv = this;
-// 	sv.process = function(number, date){
-// 		var client;
-// 	    sv.creditCard = {
-// 	      number: '',
-// 	      expirationDate: ''
-// 	    };
-//
-// 		var startup = function() {
-// 	      $braintree.getClientToken().success(function(token) {
-// 	        client = new $braintree.api.Client({
-// 	          clientToken: token
-// 	        });
-// 	      });
-// 	    };
-//
-// 		client.tokenizeCard({
-// 			number: number,
-// 			expirationDate: date
-// 		}, function(err, nonce){
-// 			//http post to server
-// 		});
-//
-// 		startup();
-// 	};
-//
-//
-// }]);
+app.service('DonateService', ['$window'/*, '$braintree'*/, '$http', function($window, $braintree, $http){
+	var sv = this;
+	sv.process = function(data){
+		console.log(data);
+	  };
+
+		var startup = function() {
+	      $braintree.getClientToken().success(function(token) {
+	        // client = new $braintree.api.Client({
+	        //   clientToken: token
+	        // });
+					console.log(token);
+	      });
+	    };
+
+		// client.tokenizeCard({
+		// 	number: data.cardNumber,
+		// 	expirationDate: data.expirationDate,
+		// 	cvv: data.cvv,
+		// 	zip: data.zip
+		// }, function(err, nonce){
+		// 	//http post to server
+		// 	$http.post('http://homestead.app/api/process')
+		// 	.then(function(response){
+		// 		console.log(response);
+		// 		$window.location="success";
+		// 	})
+		// 	.catch(function(err){
+		// 		throw new Error(err);
+		// 	});
+		// });
+
+		//startup();
+	//};
+
+
+}]);
