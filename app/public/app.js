@@ -1,6 +1,7 @@
 'use strict';
 
-var app = angular.module('nexusDRM', ['ngRoute']);
+var app = angular.module('nexusDRM', ['ngRoute'])
+	.constant('clientTokenPath', '/client-token');
 
 app.config(['$routeProvider', function($routeProvider){
 	$routeProvider

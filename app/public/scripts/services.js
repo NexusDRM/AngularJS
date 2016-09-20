@@ -58,3 +58,33 @@ app.service('LogoutService', ['$window', function($window){
 		$window.location='logged-out';
 	};
 }]);
+
+// app.service('DonateService', ['$window', '$braintree', function($window, $braintree){
+// 	var sv = this;
+// 	sv.process = function(number, date){
+// 		var client;
+// 	    sv.creditCard = {
+// 	      number: '',
+// 	      expirationDate: ''
+// 	    };
+//
+// 		var startup = function() {
+// 	      $braintree.getClientToken().success(function(token) {
+// 	        client = new $braintree.api.Client({
+// 	          clientToken: token
+// 	        });
+// 	      });
+// 	    };
+//
+// 		client.tokenizeCard({
+// 			number: number,
+// 			expirationDate: date
+// 		}, function(err, nonce){
+// 			//http post to server
+// 		});
+//
+// 		startup();
+// 	};
+//
+//
+// }]);

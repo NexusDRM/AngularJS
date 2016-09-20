@@ -4,41 +4,30 @@
 <div class="container-fluid" ng-controller="donateController as DC">
 	<form name="paymentForm" ng-submit="submit()" novalidate>
 		<div class="panel panel-default col-lg-6">
-        <h3>Donate by Credit Card</h3>
+			<div class="col-xs-12">
+				<h3>Donate by Credit Card</h3>
         <hr>
-        <div class="form-group col-lg-8">
-            <label class="control-label">Card Number</label>
-            <!--  Hosted Fields div container -->
-            <div class="form-control" id="card-number"></div>
-            <span class="helper-text"></span>
-        </div>
-        <div class="form-group col-lg-4">
-            <div class="row">
-                <label class="control-label col-lg-12">Expiration Date</label>
-                <!--  Hosted Fields div container -->
-                <div class="col-lg-6">
-                    <div class="form-control" id="expiration-month"></div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="form-control" id="expiration-year"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row col-lg-12">
-            <div class="form-group col-lg-6">
-                <label class="control-label">Security Code</label>
-                <!--  Hosted Fields div container -->
-                <div class="form-control" id="cvv"></div>
-            </div>
-            <div class="form-group col-lg-6">
-                <label class="control-label">Zipcode</label>
-                <!--  Hosted Fields div container -->
-                <div class="form-control" id="postal-code"></div>
-            </div>
-        </div>
-        <!-- add select field here -->
-    </div>
-
+				<div class="form-group col-xs-8">
+					<label>Card Number</label>
+					<input type="text" class="form-control" ng-model="DC.form.cardNumber">
+				</div>
+				<div class="form-group col-xs-4">
+					<label>Expiration</label>
+					<input type="text" class="form-control" ng-model="DC.form.cardExpire">
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="form-group col-xs-6">
+					<label>Security Code</label>
+					<input type="text" class="form-control" ng-model="DC.form.cardCVV">
+				</div>
+				<div class="form-group col-xs-6">
+					<label>Zip Code</label>
+					<input type="text" class="form-control" ng-model="DC.form.cardZip">
+				</div>
+			</div>
+		</div>
+<!-- end first panel -->
     <div class="panel panel-default col-lg-6">
         <h3>Options:</h3>
         <hr>
@@ -60,9 +49,9 @@
 						Repeat Annually
 					</label>
 				</div>
-				<div class="checkbox" ng-click="setFutureDate = !setFutureDate">
+				<div class="checkbox" ng-init="setFutureDate = false" >
 					<label>
-						<input type="checkbox" ng-init="setFutureDate = false" >
+						<input type="checkbox" ng-click="setFutureDate = !setFutureDate" >
 						Set up payment for future date
 					</label>
 				</div>
