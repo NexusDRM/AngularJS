@@ -36,11 +36,15 @@ app.controller('signupController', ['SignUpService', function(SignUpService){
 app.controller('donateController', ['$location','$window','LogoutService', 'DonateService', function($location, $window, LogoutService, DonateService){
   var vm = this;
   vm.form = {};
+  vm.clientToken = DonateService.getClientToken();
   vm.currentDate = Date.now();
   vm.maxFutureDate = new Date();
   vm.maxFutureDate.setDate(vm.maxFutureDate.getDate() + 30);
   vm.futureDate = $window.setFutureDate;
-  vm.processPayment = DonateService.process(vm.form);
+  vm.processPayment = function(){
+    console.log("form data being passed to DS.process", vm.form);
+    DonateService.process(vm.form);
+  };
   vm.logOut = LogoutService.logOut;
   //if user is not logged in we want them to be so this redirs to login
   if(!$window.localStorage.token){

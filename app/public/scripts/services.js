@@ -59,20 +59,29 @@ app.service('LogoutService', ['$window', function($window){
 	};
 }]);
 
-app.service('DonateService', ['$window'/*, '$braintree'*/, '$http', function($window, $braintree, $http){
+app.service('DonateService', ['$window', '$http', function($window, $http){
 	var sv = this;
 	sv.process = function(data){
-		console.log(data);
+		console.log("data passed to service", data);
+		//console.log($braintree.tokenizeCard(data));
 	  };
+	// sv.getToken = function(){
+	//
+	// };
 
-		var startup = function() {
-	      $braintree.getClientToken().success(function(token) {
-	        // client = new $braintree.api.Client({
-	        //   clientToken: token
-	        // });
-					console.log(token);
-	      });
-	    };
+	sv.getClientToken = function(){
+		// var jwt = $window.localStorage.token;
+		$http.post("http://homestead.app/getToken")
+		.then(function(response){
+			$window.localStorage.clientToken = response.data.clientToken;
+			console.log('derp');
+		})
+		.catch(function(err){
+			throw new Error(err, 402);
+		});
+	};
+
+
 
 		// client.tokenizeCard({
 		// 	number: data.cardNumber,

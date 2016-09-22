@@ -117,7 +117,7 @@ a{
   display: block;
 }
 
-@media (max-width: 670px) {
+/*@media (max-width: 670px) {
   .form-group {
     width: 100%;
   }
@@ -125,6 +125,10 @@ a{
   .btn {
     white-space: normal;
   }
+}*/
+
+.form-group{
+	height: 60px;
 }
 
 .btn-lg{
