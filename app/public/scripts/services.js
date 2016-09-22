@@ -34,7 +34,7 @@ app.service("SignUpService", ['$http', '$window', function($http, $window){
 
 }]);
 
-app.service("LoginService", ['$http', '$window', function($http, $window){
+app.service("LoginService", ['$http', '$window','UserService', function($http, $window, UserService){
 	var sv = this;
 	sv.register = function(){
 		$window.location='signup';
@@ -46,6 +46,7 @@ app.service("LoginService", ['$http', '$window', function($http, $window){
 		})
 		.then(function(response){
 			$window.localStorage.token = response.data.token;
+			$window.localStorage.id = UserService.ParseToken(response.data.token);
 			$window.location='donate';
 		})
 		.catch(function(err){
@@ -77,7 +78,9 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 
 	sv.getClientToken = function(){
 		// var jwt = $window.localStorage.token;
-		$http.get("http://homestead.app/getToken")
+		$http.get("http://homestead.app/getToken",{
+			user_id : $window.localStorage.id
+		})
 		.then(function(response){
 			$window.localStorage.clientToken = response.data.clientToken;
 			console.log('derp');
@@ -93,12 +96,10 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 
 app.service('UserService', ['$window','$http', function($window,$http){
 	var sv = this;
-	sv.currentUser = {};
+
 	sv.getUserInfo = function(){
-		$http.get("http://homestead.app/getUser/")
-		.then(function(response){
-			sv.currentUser = response.data.results;
-			console.log(sv.currentUser);
+		return $http.post("http://homestead.app/getUser/",{
+			user_id : $window.localStorage.id
 		});
 	};
 
@@ -111,10 +112,7 @@ app.service('UserService', ['$window','$http', function($window,$http){
 		var id = obj["sub"];
 		return id;
 	};
-	console.log("sv.currentUser",sv.currentUser);
-	sv.submit = function(){
-
-	};
+	
 }]);
 
 app.service('AdminService', ['$window', '$http', function($window,$http){

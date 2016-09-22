@@ -36,11 +36,12 @@ app.controller('signupController', ['SignUpService', function(SignUpService){
   };
 }]);
 
-app.controller('donateController', ['$location','$window','LogoutService', 'DonateService', function($location, $window, LogoutService, DonateService){
+app.controller('donateController', ['$location','$window','LogoutService', 'DonateService','UserService', function($location, $window, LogoutService, DonateService,UserService){
   var vm = this;
   if(!$window.localStorage.token){
     $location.path('/');
   }
+  vm.currentUserId = UserService.ParseToken();
   vm.form = {};
   vm.clientToken = DonateService.getClientToken();
   vm.currentDate = Date.now();
@@ -57,36 +58,46 @@ app.controller('donateController', ['$location','$window','LogoutService', 'Dona
 }]);
 
 
-app.controller('userController', ['$location','$window','UserService','LogoutService', function($location,$window,UserService,LogoutService){
+app.controller('userController', ['$location','$window','UserService','LogoutService','$http', function($location,$window,UserService,LogoutService,$http){
   var vm = this;
+  vm.updateForm = {};
+  vm.updateForm.id = $window.localStorage.id;
+  vm.updateForm.updated_at = Date.now();
+  var currentUserId = $window.localStorage.id;
+  vm.currentUserId = currentUserId;
+  UserService.getUserInfo()
+  .then(function(response){
+    vm.form = {};
+    vm.form.currentUserId = currentUserId;
+    vm.form.user = response.data.results;
+    vm.newsletterOptIn = vm.form.user.newsletterOptIn;
+    vm.title = vm.form.user.title;
+    vm.firstName = vm.form.user.firstName;
+    vm.lastName = vm.form.user.lastName;
+    vm.suffix = vm.form.user.suffix;
+    vm.streetAddress = vm.form.user.streetAddress;
+    vm.city = vm.form.user.city;
+    vm.state = vm.form.user.state;
+    vm.postalCode = vm.form.user.postalCode;
+  });
+  vm.submit = function(data){
+    data = vm.updateForm;
+    return $http.put("http://homestead.app/updateUser",{
+      data: data,
+    })
+    .then(function(){
+      $location.path('/user');
+    });
+  };
+
   vm.logOut = LogoutService.logOut;
   if(!$window.localStorage.token){
     $location.path('/');
   }
-  vm.currentUserId = UserService.ParseToken();
-  console.log("vm.currentUserId",vm.currentUserId);
-  vm.form = {};
-  vm.updated_at = Date.now();
-  // vm.userId = UserService.getId;
-  // vm.currentOptions = function(){
-  //   return AdminService.getUserInfo(vm.userId);
-  // };
-  vm.currentOptions = UserService.getUserInfo();
-  console.log("vm.currentOptions",vm.currentOptions);
-  // vm.title = vm.currentOptions.title;
-  // vm.firstName = vm.currentOptions.firstName;
-  // vm.lastName = vm.currentOptions.lastName;
-  // vm.suffix = vm.currentOptions.suffix;
-  // vm.streetAddress = vm.currentOptions.streetAddress;
-  // vm.city = vm.currentOptions.city;
-  // vm.state = vm.currentOptions.state;
-  // vm.postalCode = vm.currentOptions.postalCode;
-  // vm.phone = vm.currentOptions.phone;
-  // vm.newsletterOptIn = vm.currentOptions.newsletterOptIn;
-  // vm.isAdmin = vm.currentOptions.is_admin;
-  // vm.submit = function(){
-  //   UserService.updateUser(vm.form);
-  // };
+
+
+
+
 }]);
 
 app.controller('adminController', ['$location','$window','AdminService','UserService','LogoutService', function($location,$window,AdminService,UserService,LogoutService){

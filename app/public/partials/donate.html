@@ -1,21 +1,17 @@
 <base href="/">
 <app_blurb></app_blurb>
+
+<style type="text/css">
+	.form-control{
+		border: none;
+		margin-top: 10px;
+	}
+	.form-group{
+		height: 60px;
+	}
+</style>
 {{DC.clientToken}}
-<!-- <form id="checkout-form" action="/transaction-endpoint" method="post" ng-submit="submit()" novalidate>
-  <div id="error-message"></div>
-
-  <label for="card-number">Card Number</label>
-  <div class="hosted-field" id="card-number"></div>
-
-  <label for="cvv">CVV</label>
-  <div class="hosted-field" id="cvv"></div>
-
-  <label for="expiration-date">Expiration Date</label>
-  <div class="hosted-field" id="expiration-date"></div>
-
-  <input type="hidden" name="payment-method-nonce">
-  <input type="submit" value="Pay $10" disabled>
-</form> -->
+\
 <div class="container-fluid" ng-controller="donateController as DC">
     <form name="checkout-form" action="/transaction-endpoint" method="post" ng-submit="submit()" novalidate>
         <div class="panel panel-default steve col-lg-6">
