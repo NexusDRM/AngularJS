@@ -36,6 +36,9 @@ app.service("SignUpService", ['$http', '$window', function($http, $window){
 
 app.service("LoginService", ['$http', '$window', function($http, $window){
 	var sv = this;
+	sv.register = function(){
+		$window.location='signup';
+	};
 	sv.login = function(data){
 		$http.post('http://homestead.app/api/auth/login', {
 			email: data.email,
@@ -43,7 +46,6 @@ app.service("LoginService", ['$http', '$window', function($http, $window){
 		})
 		.then(function(response){
 			$window.localStorage.token = response.data.token;
-			// $window.localStorage.user_id =
 			$window.location='donate';
 		})
 		.catch(function(err){
@@ -55,17 +57,22 @@ app.service("LoginService", ['$http', '$window', function($http, $window){
 app.service('LogoutService', ['$window', function($window){
 	var sv = this;
 	sv.logOut = function(){
-		delete($window.localStorage.token);
+		delete $window.localStorage.token;
+		delete $window.localStorage.clientToken;
 		$window.location='logged-out';
 	};
 }]);
 
 app.service('DonateService', ['$window', '$http', function($window, $http){
 	var sv = this;
+	// sv.nonce = $window.getElementById('nonce');
 	sv.process = function(data){
-		console.log("data passed to service", data);
-		$window.location='success';
-	  };
+		$http.post('http://homestead.app/processPayment',{
+		})
+		.then(function(){
+			$window.location='success';
+		});
+	};
 
 
 	sv.getClientToken = function(){
@@ -79,7 +86,6 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 			throw new Error(err, 402);
 		});
 	};
-
 
 
 }]);
@@ -98,21 +104,19 @@ app.service('UserService', ['$window','$http', function($window,$http){
 
 	sv.ParseToken = function(){
 		var token = $window.localStorage.token;
-		// console.log("token",token);
 		var arr = token.split('.');
-		// console.log("arr",arr);
 		var payload = arr[1];
-		// console.log("payload",payload);
 		var str = atob(payload);
-		// console.log(str);
 		var obj = JSON.parse(str);
-		// console.log("obj",obj);
 		var id = obj["sub"];
-		// console.log('id',id);
 		return id;
 	};
 	console.log("sv.currentUser",sv.currentUser);
 	sv.submit = function(){
 
 	};
+}]);
+
+app.service('AdminService', ['$window', '$http', function($window,$http){
+	var sv = this;
 }]);

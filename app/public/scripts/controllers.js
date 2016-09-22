@@ -18,12 +18,15 @@ app.controller('loginController', ['LoginService', function(LoginService){
   vm.login = function(){
         LoginService.login(vm.form);
   };
+  vm.register = function(){
+      LoginService.register();
+  };
 }]);
 
-app.controller('logoutController', ['LogoutService', function(LogoutService){
-  var vm = this;
-  vm.logOut = LogoutService.logOut;
-}]);
+// app.controller('logoutController', ['LogoutService', function(LogoutService){
+//   var vm = this;
+//   vm.logOut = LogoutService.logOut;
+// }]);
 
 app.controller('signupController', ['SignUpService', function(SignUpService){
   var vm=this;
@@ -35,6 +38,9 @@ app.controller('signupController', ['SignUpService', function(SignUpService){
 
 app.controller('donateController', ['$location','$window','LogoutService', 'DonateService', function($location, $window, LogoutService, DonateService){
   var vm = this;
+  if(!$window.localStorage.token){
+    $location.path('/');
+  }
   vm.form = {};
   vm.clientToken = DonateService.getClientToken();
   vm.currentDate = Date.now();
@@ -47,42 +53,16 @@ app.controller('donateController', ['$location','$window','LogoutService', 'Dona
   };
   vm.logOut = LogoutService.logOut;
   //if user is not logged in we want them to be so this redirs to login
+
+}]);
+
+
+app.controller('userController', ['$location','$window','UserService','LogoutService', function($location,$window,UserService,LogoutService){
+  var vm = this;
+  vm.logOut = LogoutService.logOut;
   if(!$window.localStorage.token){
     $location.path('/');
   }
-}]);
-//
-// app.controller('adminController', ['$location', '$window','AdminService','UserService', function($location, $window, AdminService, UserService){
-//   var vm = this;
-//   vm.currentUserId = UserService.ParseToken;
-//   console.log(vm.currentUserId);
-//   vm.form = {};
-//   vm.updated_at = Date.now();
-//   // vm.userId = UserService.getId;
-//   // vm.currentOptions = function(){
-//   //   return AdminService.getUserInfo(vm.userId);
-//   // };
-//   vm.currentOptions = AdminService.getUserInfo;
-//   console.log(vm.currentOptions);
-//   // vm.title = vm.currentOptions.title;
-//   // vm.firstName = vm.currentOptions.firstName;
-//   // vm.lastName = vm.currentOptions.lastName;
-//   // vm.suffix = vm.currentOptions.suffix;
-//   // vm.streetAddress = vm.currentOptions.streetAddress;
-//   // vm.city = vm.currentOptions.city;
-//   // vm.state = vm.currentOptions.state;
-//   // vm.postalCode = vm.currentOptions.postalCode;
-//   // vm.phone = vm.currentOptions.phone;
-//   // vm.newsletterOptIn = vm.currentOptions.newsletterOptIn;
-//   // vm.isAdmin = vm.currentOptions.is_admin;
-//   // vm.submit = function(){
-//   //   UserService.updateUser(vm.form);
-//   // };
-// }]);
-
-app.controller('userController', ['$location','$window','UserService', function($location,$window,UserService){
-  var vm = this;
-  var vm = this;
   vm.currentUserId = UserService.ParseToken();
   console.log("vm.currentUserId",vm.currentUserId);
   vm.form = {};
@@ -107,4 +87,12 @@ app.controller('userController', ['$location','$window','UserService', function(
   // vm.submit = function(){
   //   UserService.updateUser(vm.form);
   // };
+}]);
+
+app.controller('adminController', ['$location','$window','AdminService','UserService','LogoutService', function($location,$window,AdminService,UserService,LogoutService){
+  var vm = this;
+  vm.logOut = LogoutService.logOut;
+  if(!$window.localStorage.token){
+    $location.path('/');
+  }
 }]);
