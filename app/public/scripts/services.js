@@ -43,6 +43,7 @@ app.service("LoginService", ['$http', '$window', function($http, $window){
 		})
 		.then(function(response){
 			$window.localStorage.token = response.data.token;
+			// $window.localStorage.user_id =
 			$window.location='donate';
 		})
 		.catch(function(err){
@@ -63,15 +64,13 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 	var sv = this;
 	sv.process = function(data){
 		console.log("data passed to service", data);
-		//console.log($braintree.tokenizeCard(data));
+		$window.location='success';
 	  };
-	// sv.getToken = function(){
-	//
-	// };
+
 
 	sv.getClientToken = function(){
 		// var jwt = $window.localStorage.token;
-		$http.post("http://homestead.app/getToken")
+		$http.get("http://homestead.app/getToken")
 		.then(function(response){
 			$window.localStorage.clientToken = response.data.clientToken;
 			console.log('derp');
@@ -83,25 +82,37 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 
 
 
-		// client.tokenizeCard({
-		// 	number: data.cardNumber,
-		// 	expirationDate: data.expirationDate,
-		// 	cvv: data.cvv,
-		// 	zip: data.zip
-		// }, function(err, nonce){
-		// 	//http post to server
-		// 	$http.post('http://homestead.app/api/process')
-		// 	.then(function(response){
-		// 		console.log(response);
-		// 		$window.location="success";
-		// 	})
-		// 	.catch(function(err){
-		// 		throw new Error(err);
-		// 	});
-		// });
-
-		//startup();
-	//};
+}]);
 
 
+app.service('UserService', ['$window','$http', function($window,$http){
+	var sv = this;
+	sv.currentUser = {};
+	sv.getUserInfo = function(){
+		$http.get("http://homestead.app/getUser/")
+		.then(function(response){
+			sv.currentUser = response.data.results;
+			console.log(sv.currentUser);
+		});
+	};
+
+	sv.ParseToken = function(){
+		var token = $window.localStorage.token;
+		// console.log("token",token);
+		var arr = token.split('.');
+		// console.log("arr",arr);
+		var payload = arr[1];
+		// console.log("payload",payload);
+		var str = atob(payload);
+		// console.log(str);
+		var obj = JSON.parse(str);
+		// console.log("obj",obj);
+		var id = obj["sub"];
+		// console.log('id',id);
+		return id;
+	};
+	console.log("sv.currentUser",sv.currentUser);
+	sv.submit = function(){
+
+	};
 }]);

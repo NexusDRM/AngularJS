@@ -1,0 +1,64 @@
+<base href="/">
+<div class="container-fluid" ng-controller="userController as UC">
+    <div class="row">
+        <div class="col-xs-12">
+            <form name="updateUserForm" ng-submit="submit()" novalidate>
+                <div class="col-xs-6">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="UC.form.newsletterOptIn">
+                            Opt-in for communication from Nexus
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="UC.form.newsletterOptOut">
+                            Opt-out from communication from Nexus
+                        </label>
+                    </div>
+                    <p>
+                        Currently your communication preference is
+                        {{UC.newsletterOptIn}}.
+                    </p>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group name col-lg-12">
+                        <div class="form-group col-lg-3">
+                            <input type="text" class="form-control" name="title" plUCeholder="{{UC.title}}" ng-model="UC.form.title">
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <input type="text" class="form-control" name="firstName" placeholder="{{UC.firstName}}" ng-model="UC.form.firstName">
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <input type="text" class="form-control" name="lastName" placeholder="{{UC.lastname}}" ng-model="UC.form.lastName">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <input type="text" class="form-control" name="suffix" placeholder="{{UC.suffix}}" ng-model="UC.form.suffix">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group addresss col-lg-12">
+                    <label>Address:</label>
+                    <div class="form-group col-lg-12">
+                        <input type="text" class="form-control" name="street" placeholder="{{UC.street}}" ng-model="UC.form.streetAddress">
+                    </div>
+                    <div class="form-group col-lg-9">
+                        <input type="text" class="form-control" name="city" placeholder="{{UC.city}}">
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <input type="text" class="form-control" name="state" placeholder="{{UC.state}}" ng-model="UC.form.state">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <input type="text" class="form-control" name="zip" placeholder="{{UC.zip}}" ng-model="UC.form.postalCode">
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <input type="text" class="form-control" name="phone" placeholder="{{UC.phone}}" ng-model="UC.form.phone">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success col-lg-12 signup-submit" ng-disabled="updateUserForm.$invalid" ng-click="UC.submit()">Submit</button>
+            </form>
+        </div>
+
+    </div>
+</div>

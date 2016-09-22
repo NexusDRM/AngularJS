@@ -131,11 +131,25 @@ a{
 	height: 60px;
 }
 
+.form-control{
+	border: none;
+	margin-top: 10px;
+}
+
+.hosted-field{
+	border: none;
+}
+
 .btn-lg{
 	width: 50%;
 	margin-left: 25%;
+	margin-top: 10%;
 }
 
 .panel-default{
-	height: 320px;
+	height: 400px;
+}
+
+.steve{
+	margin-left: 25%;
 }

@@ -51,3 +51,60 @@ app.controller('donateController', ['$location','$window','LogoutService', 'Dona
     $location.path('/');
   }
 }]);
+//
+// app.controller('adminController', ['$location', '$window','AdminService','UserService', function($location, $window, AdminService, UserService){
+//   var vm = this;
+//   vm.currentUserId = UserService.ParseToken;
+//   console.log(vm.currentUserId);
+//   vm.form = {};
+//   vm.updated_at = Date.now();
+//   // vm.userId = UserService.getId;
+//   // vm.currentOptions = function(){
+//   //   return AdminService.getUserInfo(vm.userId);
+//   // };
+//   vm.currentOptions = AdminService.getUserInfo;
+//   console.log(vm.currentOptions);
+//   // vm.title = vm.currentOptions.title;
+//   // vm.firstName = vm.currentOptions.firstName;
+//   // vm.lastName = vm.currentOptions.lastName;
+//   // vm.suffix = vm.currentOptions.suffix;
+//   // vm.streetAddress = vm.currentOptions.streetAddress;
+//   // vm.city = vm.currentOptions.city;
+//   // vm.state = vm.currentOptions.state;
+//   // vm.postalCode = vm.currentOptions.postalCode;
+//   // vm.phone = vm.currentOptions.phone;
+//   // vm.newsletterOptIn = vm.currentOptions.newsletterOptIn;
+//   // vm.isAdmin = vm.currentOptions.is_admin;
+//   // vm.submit = function(){
+//   //   UserService.updateUser(vm.form);
+//   // };
+// }]);
+
+app.controller('userController', ['$location','$window','UserService', function($location,$window,UserService){
+  var vm = this;
+  var vm = this;
+  vm.currentUserId = UserService.ParseToken();
+  console.log("vm.currentUserId",vm.currentUserId);
+  vm.form = {};
+  vm.updated_at = Date.now();
+  // vm.userId = UserService.getId;
+  // vm.currentOptions = function(){
+  //   return AdminService.getUserInfo(vm.userId);
+  // };
+  vm.currentOptions = UserService.getUserInfo();
+  console.log("vm.currentOptions",vm.currentOptions);
+  // vm.title = vm.currentOptions.title;
+  // vm.firstName = vm.currentOptions.firstName;
+  // vm.lastName = vm.currentOptions.lastName;
+  // vm.suffix = vm.currentOptions.suffix;
+  // vm.streetAddress = vm.currentOptions.streetAddress;
+  // vm.city = vm.currentOptions.city;
+  // vm.state = vm.currentOptions.state;
+  // vm.postalCode = vm.currentOptions.postalCode;
+  // vm.phone = vm.currentOptions.phone;
+  // vm.newsletterOptIn = vm.currentOptions.newsletterOptIn;
+  // vm.isAdmin = vm.currentOptions.is_admin;
+  // vm.submit = function(){
+  //   UserService.updateUser(vm.form);
+  // };
+}]);

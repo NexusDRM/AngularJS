@@ -1,0 +1,70 @@
+<base href="/">
+<div class="container-fluid" ng-controller="adminController as AC">
+    <div class="row">
+        <div class="col-xs-12">
+            <form name="updateUserForm" ng-submit="submit()" novalidate>
+                <div class="col-xs-6">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="AC.form.newsletterOptIn">
+                            Opt-in for communication from Nexus
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="AC.form.newsletterOptOut">
+                            Opt-out from communication from Nexus
+                        </label>
+                    </div>
+                    <p>
+                        Currently your communication preference is
+                        {{AC.newsletterOptIn}}.
+                    </p>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group name col-lg-12">
+                        <div class="form-group col-lg-3">
+                            <input type="text" class="form-control" name="title" placeholder="{{AC.title}}" ng-model="AC.form.title">
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <input type="text" class="form-control" name="firstName" placeholder="{{AC.firstName}}" ng-model="AC.form.firstName">
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <input type="text" class="form-control" name="lastName" placeholder="{{AC.lastname}}" ng-model="AC.form.lastName">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <input type="text" class="form-control" name="suffix" placeholder="{{AC.suffix}}" ng-model="AC.form.suffix">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group addresss col-lg-12">
+                    <label>Address:</label>
+                    <div class="form-group col-lg-12">
+                        <input type="text" class="form-control" name="street" placeholder="{{AC.street}}" ng-model="AC.form.streetAddress">
+                    </div>
+                    <div class="form-group col-lg-9">
+                        <input type="text" class="form-control" name="city" placeholder="{{AC.city}}">
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <input type="text" class="form-control" name="state" placeholder="{{AC.state}}" ng-model="AC.form.state">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <input type="text" class="form-control" name="zip" placeholder="{{AC.zip}}" ng-model="AC.form.postalCode">
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <input type="text" class="form-control" name="phone" placeholder="{{AC.phone}}" ng-model="AC.form.phone">
+                    </div>
+                </div>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" ng-model="AC.form.is_admin">
+										Current admin value is {{AC.isAdmin}}
+									</label>
+								</div>
+
+                <button type="submit" class="btn btn-success col-lg-12 signup-submit" ng-disabled="updateUserForm.$invalid" ng-click="AC.submit()">Submit</button>
+            </form>
+        </div>
+
+    </div>
+</div>
