@@ -10,10 +10,9 @@
 		height: 60px;
 	}
 </style>
-{{DC.clientToken}}
-\
-<div class="container-fluid" ng-controller="donateController as DC">
-    <form name="checkout-form" action="/transaction-endpoint" method="post" ng-submit="submit()" novalidate>
+<!-- {{DC.clientToken}} -->
+<div class="container-fluid" id="payment-form">
+    <form name="checkout-form" ng-submit="submit(DC.processPayment)" novalidate>
         <div class="panel panel-default steve col-lg-6">
             <div class="col-xs-12">
                 <h3>Donate by Credit Card</h3>
@@ -29,14 +28,14 @@
 
                 <!-- <div id="dropin-container"></div> -->
 
-                <div class="form-group hosted-field col-xs-6" id="card-number" ng-model="DC.form.cardNumber">
+                <div class="form-group hosted-field col-xs-6" id="card-number" ng-model="DC.form.number">
                     <label>Card Number</label>
                     <!-- <input type="text" class="form-control" name="cardNumber" ng-model="DC.form.cardNumber" ng-minlength="16" ng-maxlength="16"> -->
                     <!-- <p ng-show="paymentForm.cardNumber.$invalid && !paymentForm.cardNumber.$pristine" class="help-block">
                         Please enter a valid card number
                     </p> -->
                 </div>
-                <div class="form-group hosted-field col-xs-6" id="expiration-date" ng-model="DC.form.cardExpire">
+                <div class="form-group hosted-field col-xs-6" id="expiration-date" ng-model="DC.form.expire">
                     <label>Expiration Date</label>
                     <!-- <input type="month" class="form-control" ng-model="DC.form.cardExpire"> -->
                 </div>
@@ -132,7 +131,7 @@
 
     {{DC.form}}
     <div class="footer-info col-lg-12">
-        <button type="button" class="btn btn-link" name="button" ng-click="DC.logOut()">Log Out</button>
+        <button type="button" class="btn btn-link" value="{{DC.form.amount}}" id="submit" ng-click="DC.logOut()">Log Out</button>
     </div>
 
 </div>

@@ -1,0 +1,9 @@
+<base href="/">
+<div class="container-fluid">
+    <div class="row">
+			{{AC.userToModify}}
+			<ul>
+				<li ng-repeat="user in AC.users | orderBy: 'lastName'"><a ng-model="AC.userToModify" ng-click="AC.setUser(user.id)">{{user.lastName}} {{user.firstName}} {{user.email}} is admin: {{user.is_admin}} id: {{user.id}}</a></li>
+			</ul>
+		</div>
+	</div>

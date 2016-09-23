@@ -24,3 +24,9 @@ app.directive('appFooter', function(){
 		templateUrl: 'partials/_footer.html'
 	};
 });
+
+app.directive('selectUser', function(){
+	return {
+		templateUrl: 'partials/_selectuser.html'
+	};
+});

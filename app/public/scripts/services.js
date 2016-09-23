@@ -69,10 +69,13 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 	var sv = this;
 	// sv.nonce = $window.getElementById('nonce');
 	sv.process = function(data){
+		console.log(data);
 		$http.post('http://homestead.app/processPayment',{
+			nonce:data
 		})
 		.then(function(){
-			$window.location='success';
+			console.log('redir');
+			// $window.location='success';
 		});
 	};
 
@@ -84,7 +87,7 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 		})
 		.then(function(response){
 			$window.localStorage.clientToken = response.data.clientToken;
-			console.log('derp');
+			// console.log('derp');
 		})
 		.catch(function(err){
 			throw new Error(err, 402);
@@ -118,9 +121,9 @@ app.service('UserService', ['$window','$http', function($window,$http){
 
 app.service('AdminService', ['$window', '$http', function($window,$http){
 	var sv = this;
-	// sv.getUsers = function(){
-	// 	return $http.post("http://homestead.app/getAllUsers",{
-	// 		user_id : $window.localStorage.id
-	// 	});
-	// };
+	sv.getUserInfo = function(id){
+		return $http.post("http://homestead.app/getUser/",{
+			user_id : id
+		});
+	};
 }]);

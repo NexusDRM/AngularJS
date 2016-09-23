@@ -1,10 +1,9 @@
 <base href="/">
 <div class="container-fluid">
-	{{AC.form}}
+	<!-- {{AC.form}} -->
     <div class="row">
-			<ul>
-				<li ng-repeat="users in AC.users"></li>
-			</ul>
+			<!-- {{AC.userToModify}} -->
+			<select_user></select_user>
             <form class="col-xs-12" name="updateUserForm" ng-submit="submit()" novalidate>
                 <div class="col-xs-6">
                     <div class="checkbox">

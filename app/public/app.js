@@ -2,6 +2,7 @@
 
 var app = angular.module('nexusDRM', ['ngRoute']);
 
+
 app.config(['$routeProvider', function($routeProvider){
 	$routeProvider
 		.when('/', {
