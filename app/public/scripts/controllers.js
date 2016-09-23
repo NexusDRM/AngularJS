@@ -79,14 +79,17 @@ app.controller('userController', ['$location','$window','UserService','LogoutSer
     vm.city = vm.form.user.city;
     vm.state = vm.form.user.state;
     vm.postalCode = vm.form.user.postalCode;
+    vm.phone = vm.form.user.phone;
   });
-  vm.submit = function(data){
-    data = vm.updateForm;
+  vm.submit = function(){
+    var data = vm.updateForm;
+    console.log(data);
     return $http.put("http://homestead.app/updateUser",{
       data: data,
     })
     .then(function(){
-      $location.path('/user');
+      console.log('redir');
+      $window.location='user';
     });
   };
 
@@ -100,9 +103,23 @@ app.controller('userController', ['$location','$window','UserService','LogoutSer
 
 }]);
 
-app.controller('adminController', ['$location','$window','AdminService','UserService','LogoutService', function($location,$window,AdminService,UserService,LogoutService){
+app.controller('adminController', ['$location','$window','AdminService','UserService','LogoutService','$http', function($location,$window,AdminService,UserService,LogoutService,$http){
   var vm = this;
+  vm.updateForm = {};
+  vm.updateForm.id = $window.localStorage.id;
+  vm.updateForm.updated_at = Date.now();
+  var currentUserId = $window.localStorage.id;
+  vm.currentUserId = currentUserId;
   vm.logOut = LogoutService.logOut;
+	$http.post("http://homestead.app/getAllUsers",{
+    user_id : $window.localStorage.id
+		})
+    .then(function(response){
+      console.log(response.data.users);
+      vm.users = response.data.users;
+  });
+  // AdminService.getUsers()
+
   if(!$window.localStorage.token){
     $location.path('/');
   }

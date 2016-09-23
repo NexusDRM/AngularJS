@@ -40,7 +40,8 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 		$window.location='signup';
 	};
 	sv.login = function(data){
-		$http.post('http://homestead.app/api/auth/login', {
+		console.log(data);
+		$http.post('http://homestead.app/login', {
 			email: data.email,
 			password: data.password
 		})
@@ -112,9 +113,14 @@ app.service('UserService', ['$window','$http', function($window,$http){
 		var id = obj["sub"];
 		return id;
 	};
-	
+
 }]);
 
 app.service('AdminService', ['$window', '$http', function($window,$http){
 	var sv = this;
+	// sv.getUsers = function(){
+	// 	return $http.post("http://homestead.app/getAllUsers",{
+	// 		user_id : $window.localStorage.id
+	// 	});
+	// };
 }]);
