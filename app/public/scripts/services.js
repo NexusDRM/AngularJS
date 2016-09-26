@@ -1,6 +1,6 @@
 'use strict';
 
-app.service("SignUpService", ['$http', '$window', function($http, $window){
+app.service("SignUpService", ['$http', '$window','UserService', function($http, $window, UserService){
 	var sv = this;
 	//TODO: want to implement password checking
 
@@ -17,7 +17,8 @@ app.service("SignUpService", ['$http', '$window', function($http, $window){
 				state: form.state || null,
 				postalCode: form.postalCode || null,
 				phone: form.phone || null,
-				newsletterOptIn: form.newsletterOptIn || null
+				newsletterOptIn: form.newsletterOptIn || null,
+				is_admin: form.is_admin || null
       });
 			console.log(data);
 
@@ -25,6 +26,7 @@ app.service("SignUpService", ['$http', '$window', function($http, $window){
 			.then(function(response) {
 				console.log(response);
         $window.localStorage.token = response.data.token;
+				$window.localStorage.id = UserService.ParseToken(response.data.token);
         $window.location='donate';
       })
       .catch(function(err) {

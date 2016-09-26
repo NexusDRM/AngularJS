@@ -1,28 +1,17 @@
 <base href="/">
 <div class="container-fluid">
-	<!-- {{AC.form}} -->
+	{{AC.updateForm}}
     <div class="row">
 			{{AC.userToModify}}
 			<select_user></select_user>
             <form class="col-xs-12" name="updateUserForm" ng-submit="submit()" novalidate>
-                <div class="col-xs-6">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" ng-model="AC.updateForm.newsletterOptIn">
-                            Opt-in for communication from Nexus
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" ng-model="AC.updateForm.newsletterOptOut">
-                            Opt-out from communication from Nexus
-                        </label>
-                    </div>
-                    <p>
-                        Currently your communication preference is
-                        <!-- {{AC.newsletterOptIn}}. -->
-                    </p>
-                </div>
+							<div class="col-xs-6">
+									<label>Recieve communication from Nexus International?</label>
+									<div class="btn-group" role="group" aria-label="..." ng-model="UC.form.newsletterOptIn">
+											<button type="button" ng-click="UC.optIn()" class="btn btn-default">Yes</button>
+											<button type="button" ng-click="UC.optOut()" class="btn btn-default">No </button>
+									</div>
+							</div>
                 <div class="col-xs-6">
                     <div class="form-group name col-lg-12">
                         <div class="form-group col-lg-3">

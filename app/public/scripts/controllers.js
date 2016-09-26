@@ -104,14 +104,19 @@ app.controller('userController', ['$location', '$window', 'UserService', 'Logout
     vm.updateForm.updated_at = Date.now();
     var currentUserId = $window.localStorage.id;
     vm.currentUserId = currentUserId;
+    console.log(currentUserId);
+
 
     //UserService.getuserinfo is to prepopulate field placeholders with current user info
     UserService.getUserInfo()
         .then(function(response) {
             vm.form = {};
+            console.log(vm.form);
             vm.form.currentUserId = currentUserId;
+            console.log(currentUserId);
             vm.form.user = response.data.results;
-            // vm.newsletterOptIn = vm.form.user.newsletterOptIn;
+            console.log(vm.form.user);
+            vm.newsletterOptIn = vm.form.user.newsletterOptIn;
             vm.title = vm.form.user.title;
             vm.firstName = vm.form.user.firstName;
             vm.lastName = vm.form.user.lastName;
@@ -130,7 +135,17 @@ app.controller('userController', ['$location', '$window', 'UserService', 'Logout
             vm.updateForm.state = vm.form.user.state;
             vm.updateForm.postalCode = vm.form.user.postalCode;
             vm.updateForm.phone = vm.form.user.phone;
+            vm.updateForm.newsletterOptIn = vm.form.user.newsletterOptIn;
         });
+
+    vm.optIn = function(){
+      vm.updateForm.newsletterOptIn = true;
+    };
+
+    vm.optOut = function(){
+      vm.updateForm.newsletterOptIn = false;
+    };
+
     vm.submit = function() {
       var data = vm.updateForm;
       console.log(data);
@@ -173,11 +188,12 @@ app.controller('adminController', ['$location', '$window', 'AdminService', 'User
         vm.userToModify = e.currentTarget;
 
     };
-    UserService.getUserInfo(vm.userToModify)
+    UserService.getUserInfo()
         .then(function(response) {
             vm.form = {};
             vm.form.currentUserId = currentUserId;
             vm.form.user = response.data.results;
+            console.log(vm.form.user);
             vm.newsletterOptIn = vm.form.user.newsletterOptIn;
             vm.title = vm.form.user.title;
             vm.firstName = vm.form.user.firstName;
@@ -188,7 +204,25 @@ app.controller('adminController', ['$location', '$window', 'AdminService', 'User
             vm.state = vm.form.user.state;
             vm.postalCode = vm.form.user.postalCode;
             vm.phone = vm.form.user.phone;
+            vm.updateForm.title = vm.form.user.title;
+            vm.updateForm.firstName = vm.form.user.firstName;
+            vm.updateForm.lastName = vm.form.user.lastName;
+            vm.updateForm.suffix = vm.form.user.suffix;
+            vm.updateForm.streetAddress = vm.form.user.streetAddress;
+            vm.updateForm.city = vm.form.user.city;
+            vm.updateForm.state = vm.form.user.state;
+            vm.updateForm.postalCode = vm.form.user.postalCode;
+            vm.updateForm.phone = vm.form.user.phone;
+            vm.updateForm.newsletterOptIn = vm.form.user.newsletterOptIn;
         });
+
+    vm.optIn = function(){
+      vm.updateForm.newsletterOptIn = true;
+    };
+
+    vm.optOut = function(){
+      vm.updateForm.newsletterOptIn = false;
+    };
 
     vm.submit = function(){
       var data = vm.updateForm;

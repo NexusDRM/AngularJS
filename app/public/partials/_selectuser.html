@@ -3,7 +3,7 @@
     <div class="row">
 			{{AC.userToModify}}
 			<ul>
-				<li ng-repeat="user in AC.users | orderBy: 'lastName'"><a ng-model="AC.userToModify" ng-click="AC.setUser(user.id)">{{user.lastName}} {{user.firstName}} {{user.email}} is admin: {{user.is_admin}} id: {{user.id}}</a></li>
+				<li ng-repeat="user in AC.users | orderBy: 'lastName'"><a ng-model="AC.userToModify" ng-click="AC.setUser(user.id)">{{user.id}} {{user.lastName}} {{user.firstName}} {{user.email}}</a></li>
 			</ul>
 		</div>
 	</div>

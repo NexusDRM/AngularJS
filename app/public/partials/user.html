@@ -5,9 +5,9 @@
         <form class="col-xs-12" name="updateUserForm" ng-submit="submit()" novalidate>
             <div class="col-xs-6">
 								<label>Recieve communication from Nexus International?</label>
-                <div class="btn-group" role="group" aria-label="..." ng-model="UC.form.newsletterOptIn" ng-init="UC.newsletterOptIn = UC.newsletterOptIn">
-                    <button type="button" ng-click="UC.newsletterOptIn = true" class="btn btn-default">Yes</button>
-                    <button type="button" ng-click="UC.newsletterOptIn = false" class="btn btn-default">No </button>
+                <div class="btn-group" role="group" aria-label="..." ng-model="UC.form.newsletterOptIn">
+                    <button type="button" ng-click="UC.optIn()" class="btn btn-default">Yes</button>
+                    <button type="button" ng-click="UC.optOut()" class="btn btn-default">No </button>
                 </div>
             </div>
             <div class="col-xs-6">
