@@ -2,7 +2,7 @@
 <div class="container-fluid">
 	<!-- {{AC.form}} -->
     <div class="row">
-			<!-- {{AC.userToModify}} -->
+			{{AC.userToModify}}
 			<select_user></select_user>
             <form class="col-xs-12" name="updateUserForm" ng-submit="submit()" novalidate>
                 <div class="col-xs-6">
@@ -20,53 +20,53 @@
                     </div>
                     <p>
                         Currently your communication preference is
-                        {{AC.newsletterOptIn}}.
+                        <!-- {{AC.newsletterOptIn}}. -->
                     </p>
                 </div>
                 <div class="col-xs-6">
                     <div class="form-group name col-lg-12">
                         <div class="form-group col-lg-3">
 													<label>Title</label>
-                            <input type="text" class="form-control" name="title" placeholder="{{AC.title}}" ng-model="AC.updateForm.title">
+                            <input type="text" class="form-control" name="title" value="{{AC.title}}" ng-model="AC.updateForm.title">
                         </div>
                         <div class="form-group col-lg-9">
 													<label>First Name</label>
-                            <input type="text" class="form-control" name="firstName" placeholder="{{AC.firstName}}" ng-model="AC.updateForm.firstName">
+                            <input type="text" class="form-control" name="firstName" value="{{AC.firstName}}" ng-model="AC.updateForm.firstName">
                         </div>
                         <div class="form-group col-lg-9">
 													<label>Last Name</label>
-                            <input type="text" class="form-control" name="lastName" placeholder="{{AC.lastName}}" ng-model="AC.updateForm.lastName">
+                            <input type="text" class="form-control" name="lastName" value="{{AC.lastName}}" ng-model="AC.updateForm.lastName">
                         </div>
                         <div class="form-group col-lg-3">
 													<label>Suffix</label>
-                            <input type="text" class="form-control" name="suffix" placeholder="{{AC.suffix}}" ng-model="AC.updateForm.suffix">
+                            <input type="text" class="form-control" name="suffix" value="{{AC.suffix}}" ng-model="AC.updateForm.suffix">
                         </div>
                     </div>
                 </div>
                 <div class="form-group addresss col-lg-12">
                     <div class="form-group col-lg-12">
 											<label>Street</label>
-                        <input type="text" class="form-control" name="street" placeholder="{{AC.streetAddress}}" ng-model="AC.updateForm.streetAddress">
+                        <input type="text" class="form-control" name="street" value="{{AC.streetAddress}}" ng-model="AC.updateForm.streetAddress">
                     </div>
                     <div class="form-group col-lg-9">
 											<label>City</label>
-                        <input type="text" class="form-control" name="city" placeholder="{{AC.city}}" ng-model="AC.updateForm.city">
+                        <input type="text" class="form-control" name="city" value="{{AC.city}}" ng-model="AC.updateForm.city">
                     </div>
                     <div class="form-group col-lg-3">
 											<label>State</label>
-                        <input type="text" class="form-control" name="state" placeholder="{{AC.state}}" ng-model="AC.updateForm.state">
+                        <input type="text" class="form-control" name="state" value="{{AC.state}}" ng-model="AC.updateForm.state">
                     </div>
                     <div class="form-group col-lg-4">
 											<label>Postal Code</label>
-                        <input type="text" class="form-control" name="zip" placeholder="{{AC.postalCode}}" ng-model="AC.updateForm.postalCode">
+                        <input type="text" class="form-control" name="zip" value="{{AC.postalCode}}" ng-model="AC.updateForm.postalCode">
                     </div>
                     <div class="form-group col-lg-8">
 											<label>Phone</label>
-                        <input type="text" class="form-control" name="phone" placeholder="{{AC.phone}}" ng-model="AC.updateForm.phone">
+                        <input type="tel" class="form-control" name="phone" value="{{AC.phone}}" ng-model="AC.updateForm.phone">
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-sACcess col-lg-12"  ng-click="AC.submit()">Submit</button>
+                <button type="submit" class="btn btn-success col-lg-12"  ng-click="AC.submit()">Submit</button>
 								{{AC.updateForm}}
             </form>
 				<div class="footer-info col-lg-12">

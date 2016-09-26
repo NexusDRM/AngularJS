@@ -121,6 +121,15 @@ app.controller('userController', ['$location', '$window', 'UserService', 'Logout
             vm.state = vm.form.user.state;
             vm.postalCode = vm.form.user.postalCode;
             vm.phone = vm.form.user.phone;
+            vm.updateForm.title = vm.form.user.title;
+            vm.updateForm.firstName = vm.form.user.firstName;
+            vm.updateForm.lastName = vm.form.user.lastName;
+            vm.updateForm.suffix = vm.form.user.suffix;
+            vm.updateForm.streetAddress = vm.form.user.streetAddress;
+            vm.updateForm.city = vm.form.user.city;
+            vm.updateForm.state = vm.form.user.state;
+            vm.updateForm.postalCode = vm.form.user.postalCode;
+            vm.updateForm.phone = vm.form.user.phone;
         });
     vm.submit = function() {
       var data = vm.updateForm;
@@ -180,6 +189,17 @@ app.controller('adminController', ['$location', '$window', 'AdminService', 'User
             vm.postalCode = vm.form.user.postalCode;
             vm.phone = vm.form.user.phone;
         });
+
+    vm.submit = function(){
+      var data = vm.updateForm;
+      // var user_id = $window.localStorage.id;
+      $http.put("http://homestead.app/updateUser", data)
+          .then(function(response) {
+              console.log(response);
+              $window.location = 'admin';
+          });
+    };
+
     if (!$window.localStorage.token) {
         $window.location = '/';
     }

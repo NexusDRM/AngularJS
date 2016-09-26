@@ -1,73 +1,62 @@
 <base href="/">
 <div class="container-fluid">
-	{{UC.updateForm}}
+    {{UC.updateForm}}
     <div class="row">
-            <form class="col-xs-12" name="updateUserForm" ng-submit="submit()" novalidate>
-                <div class="col-xs-6">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" ng-model="UC.updateForm.newsletterOptIn">
-                            Opt-in for communication from Nexus
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" ng-model="UC.updateForm.newsletterOptOut">
-                            Opt-out from communication from Nexus
-                        </label>
-                    </div>
-                    <p>
-                        Currently your communication preference is
-                        {{UC.newsletterOptIn}}.
-                    </p>
+        <form class="col-xs-12" name="updateUserForm" ng-submit="submit()" novalidate>
+            <div class="col-xs-6">
+								<label>Recieve communication from Nexus International?</label>
+                <div class="btn-group" role="group" aria-label="..." ng-model="UC.form.newsletterOptIn" ng-init="UC.newsletterOptIn = UC.newsletterOptIn">
+                    <button type="button" ng-click="UC.newsletterOptIn = true" class="btn btn-default">Yes</button>
+                    <button type="button" ng-click="UC.newsletterOptIn = false" class="btn btn-default">No </button>
                 </div>
-                <div class="col-xs-6">
-                    <div class="form-group name col-lg-12">
-                        <div class="form-group col-lg-3">
-													<label>Title</label>
-                            <input type="text" class="form-control" name="title" placeholder="{{UC.title}}" ng-model="UC.updateForm.title">
-                        </div>
-                        <div class="form-group col-lg-9">
-													<label>First Name</label>
-                            <input type="text" class="form-control" name="firstName" placeholder="{{UC.firstName}}" ng-model="UC.updateForm.firstName">
-                        </div>
-                        <div class="form-group col-lg-9">
-													<label>Last Name</label>
-                            <input type="text" class="form-control" name="lastName" placeholder="{{UC.lastName}}" ng-model="UC.updateForm.lastName">
-                        </div>
-                        <div class="form-group col-lg-3">
-													<label>Suffix</label>
-                            <input type="text" class="form-control" name="suffix" placeholder="{{UC.suffix}}" ng-model="UC.updateForm.suffix">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group addresss col-lg-12">
-                    <div class="form-group col-lg-12">
-											<label>Street</label>
-                        <input type="text" class="form-control" name="street" placeholder="{{UC.streetAddress}}" ng-model="UC.updateForm.streetAddress">
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group name col-lg-12">
+                    <div class="form-group col-lg-3">
+                        <label>Title</label>
+                        <input type="text" class="form-control" name="title" placeholder="{{UC.title}}" ng-model="UC.updateForm.title">
                     </div>
                     <div class="form-group col-lg-9">
-											<label>City</label>
-                        <input type="text" class="form-control" name="city" placeholder="{{UC.city}}" ng-model="UC.updateForm.city">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" name="firstName" placeholder="{{UC.firstName}}" ng-model="UC.updateForm.firstName">
+                    </div>
+                    <div class="form-group col-lg-9">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="lastName" placeholder="{{UC.lastName}}" ng-model="UC.updateForm.lastName">
                     </div>
                     <div class="form-group col-lg-3">
-											<label>State</label>
-                        <input type="text" class="form-control" name="state" placeholder="{{UC.state}}" ng-model="UC.updateForm.state">
-                    </div>
-                    <div class="form-group col-lg-4">
-											<label>Postal Code</label>
-                        <input type="text" class="form-control" name="zip" placeholder="{{UC.postalCode}}" ng-model="UC.updateForm.postalCode">
-                    </div>
-                    <div class="form-group col-lg-8">
-											<label>Phone</label>
-                        <input type="text" class="form-control" name="phone" placeholder="{{UC.phone}}" ng-model="UC.updateForm.phone">
+                        <label>Suffix</label>
+                        <input type="text" class="form-control" name="suffix" placeholder="{{UC.suffix}}" ng-model="UC.updateForm.suffix">
                     </div>
                 </div>
+            </div>
+            <div class="form-group addresss col-lg-12">
+                <div class="form-group col-lg-12">
+                    <label>Street</label>
+                    <input type="text" class="form-control" name="street" placeholder="{{UC.streetAddress}}" ng-model="UC.updateForm.streetAddress">
+                </div>
+                <div class="form-group col-lg-9">
+                    <label>City</label>
+                    <input type="text" class="form-control" name="city" placeholder="{{UC.city}}" ng-model="UC.updateForm.city">
+                </div>
+                <div class="form-group col-lg-3">
+                    <label>State</label>
+                    <input type="text" class="form-control" name="state" placeholder="{{UC.state}}" ng-model="UC.updateForm.state">
+                </div>
+                <div class="form-group col-lg-4">
+                    <label>Postal Code</label>
+                    <input type="text" class="form-control" name="zip" placeholder="{{UC.postalCode}}" ng-model="UC.updateForm.postalCode">
+                </div>
+                <div class="form-group col-lg-8">
+                    <label>Phone</label>
+                    <input type="text" class="form-control" name="phone" placeholder="{{UC.phone}}" ng-model="UC.updateForm.phone">
+                </div>
+            </div>
 
-                <button type="submit" class="btn btn-success col-lg-12"  ng-click="UC.submit()">Submit</button>
-            </form>
-				<div class="footer-info col-lg-12">
-						<button type="button" class="btn btn-link" name="button" ng-click="UC.logOut()">Log Out</button>
-				</div>
+            <button type="submit" class="btn btn-success col-lg-12" ng-click="UC.submit()">Submit</button>
+        </form>
+        <div class="footer-info col-lg-12">
+            <button type="button" class="btn btn-link" name="button" ng-click="UC.logOut()">Log Out</button>
+        </div>
     </div>
 </div>
