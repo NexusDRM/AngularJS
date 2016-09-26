@@ -49,15 +49,15 @@ app.controller('donateController', ['$document','$location', '$window', 'LogoutS
     }
     getToken();
 
-    vm.process = function(){
-      var creditCard = $document.getElementById('credit-card-number');
-      var cvv = $document.getElementById('cvv');
-      var expire = $document.getElementById('expiration-date');
-
-      $http.post("http://homestead.app/processPayment", {
-
-      })
-    };
+    // vm.process = function(){
+    //   var creditCard = $document.getElementById('credit-card-number');
+    //   var cvv = $document.getElementById('cvv');
+    //   var expire = $document.getElementById('expiration-date');
+    //
+    //   $http.post("http://homestead.app/processPayment", {
+    //
+    //   })
+    // };
     vm.logOut = LogoutService.logOut;
 
     //--------------------Placeholder code for sub feature of Laravel---------------------------

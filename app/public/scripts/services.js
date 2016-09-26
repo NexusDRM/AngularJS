@@ -27,7 +27,7 @@ app.service("SignUpService", ['$http', '$window','UserService', function($http, 
 				console.log(response);
         $window.localStorage.token = response.data.token;
 				$window.localStorage.id = UserService.ParseToken(response.data.token);
-        $window.location='donate';
+        $window.location='user';
       })
       .catch(function(err) {
 				throw new Error(err, 402);
@@ -50,7 +50,7 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 		.then(function(response){
 			$window.localStorage.token = response.data.token;
 			$window.localStorage.id = UserService.ParseToken(response.data.token);
-			$window.location='donate';
+			$window.location='user';
 		})
 		.catch(function(err){
 			throw new Error(err, 402);

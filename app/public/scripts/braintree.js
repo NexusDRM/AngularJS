@@ -74,7 +74,7 @@ braintree.client.create({
 								amount: amountFromClient}
 				})
 				.done(function(msg){
-					alert("Success" + msg);
+					alert("Success");
 				});
       });
     }, false);
