@@ -54,7 +54,7 @@ app.controller('donateController', ['$document','$location', '$window', 'LogoutS
     //   var cvv = $document.getElementById('cvv');
     //   var expire = $document.getElementById('expiration-date');
     //
-    //   $http.post("http://homestead.app/processPayment", {
+    //   $http.post("http://nexusdrmapiv1-env.us-west-2.elasticbeanstalk.com/processPayment", {
     //
     //   })
     // };
@@ -149,7 +149,7 @@ app.controller('userController', ['$location', '$window', 'UserService', 'Logout
     vm.submit = function() {
       var data = vm.updateForm;
       // console.log(data);
-        $http.put("http://homestead.app/updateUser", data)
+        $http.put("http://nexusdrmapiv1-env.us-west-2.elasticbeanstalk.com/updateUser", data)
             .then(function(response) {
                 // console.log(response);
                 $window.location = 'user';
@@ -176,7 +176,7 @@ app.controller('adminController', ['$location', '$window', 'AdminService', 'User
     var currentUserId = $window.localStorage.id;
     vm.currentUserId = currentUserId;
     vm.logOut = LogoutService.logOut;
-    $http.post("http://homestead.app/getAllUsers", {
+    $http.post("http://nexusdrmapiv1-env.us-west-2.elasticbeanstalk.com/getAllUsers", {
             user_id: $window.localStorage.id
         })
         .then(function(response) {
@@ -227,7 +227,7 @@ app.controller('adminController', ['$location', '$window', 'AdminService', 'User
     vm.submit = function(){
       var data = vm.updateForm;
       // var user_id = $window.localStorage.id;
-      $http.put("http://homestead.app/updateUser", data)
+      $http.put("http://nexusdrmapiv1-env.us-west-2.elasticbeanstalk.com/updateUser", data)
           .then(function(response) {
               // console.log(response);
               $window.location = 'admin';

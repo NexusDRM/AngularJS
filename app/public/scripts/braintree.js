@@ -50,7 +50,7 @@ braintree.client.create({
     // (function(){
     //   $.ajax({
     //     method: "GET",
-    //     url: "http://homestead.app/getToken",
+    //     url: "http://nexusdrmapiv1-env.us-west-2.elasticbeanstalk.com/getToken",
     //     data: {user_id : window.localStorage.id}
     //   })
     //   .done(function(response){
@@ -79,7 +79,7 @@ braintree.client.create({
 				// console.log(amountFromClient);
 				$.ajax({
 					method: "POST",
-					url: "http://homestead.app/processPayment",
+					url: "http://nexusdrmapiv1-env.us-west-2.elasticbeanstalk.com/processPayment",
 					data: {payload: payload.nonce,
 								amount: amountFromClient}
 				})
