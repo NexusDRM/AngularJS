@@ -99,7 +99,7 @@ app.controller('userController', ['$location', '$window', 'UserService', 'Logout
 
     //updateForm is filled with creamy goodness and then passed long with vm.submit to update user
     vm.updateForm = {};
-    
+
     vm.updateForm.id = $window.localStorage.id;
     vm.updateForm.updated_at = Date.now();
     var currentUserId = $window.localStorage.id;
@@ -122,8 +122,10 @@ app.controller('userController', ['$location', '$window', 'UserService', 'Logout
             vm.postalCode = vm.form.user.postalCode;
             vm.phone = vm.form.user.phone;
         });
-    vm.submit = function(data) {
-        $http.put("http://homestead.app/updateUser", {data})
+    vm.submit = function() {
+      var data = vm.updateForm;
+      console.log(data);
+        $http.put("http://homestead.app/updateUser", data)
             .then(function(response) {
                 console.log(response);
                 $window.location = 'user';
