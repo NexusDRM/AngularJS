@@ -31,6 +31,10 @@ app.config(['$routeProvider', function($routeProvider){
 			templateUrl: 'partials/user.html',
 			controller: 'userController as UC'
 		})
+		.when('/success', {
+			templateUrl: 'partials/success.html',
+			controller: 'userController as UC'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

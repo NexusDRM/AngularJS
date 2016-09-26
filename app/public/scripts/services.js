@@ -27,7 +27,7 @@ app.service("SignUpService", ['$http', '$window','UserService', function($http, 
 				console.log(response);
         $window.localStorage.token = response.data.token;
 				$window.localStorage.id = UserService.ParseToken(response.data.token);
-        $window.location='user';
+        $window.location='donate';
       })
       .catch(function(err) {
 				throw new Error(err, 402);
@@ -50,7 +50,7 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 		.then(function(response){
 			$window.localStorage.token = response.data.token;
 			$window.localStorage.id = UserService.ParseToken(response.data.token);
-			$window.location='user';
+			$window.location='donate';
 		})
 		.catch(function(err){
 			throw new Error(err, 402);
@@ -69,17 +69,18 @@ app.service('LogoutService', ['$window', function($window){
 
 app.service('DonateService', ['$window', '$http', function($window, $http){
 	var sv = this;
-	// sv.nonce = $window.getElementById('nonce');
-	sv.process = function(data){
-		console.log(data);
-		$http.post('http://homestead.app/processPayment',{
-			nonce:data
-		})
-		.then(function(){
-			console.log('redir');
-			// $window.location='success';
-		});
-	};
+	// sv.process = function(data){
+	// 	console.log(data);
+	// 	$http.post('http://homestead.app/processPayment',{
+	// 		nonce:data
+	// 	})
+	// 	.then(function(){
+	// 		$window.location='success';
+	// 	})
+	// 	.catch(function(err){
+	// 		throw new Error(err);
+	// 	});
+	// };
 
 
 	sv.getClientToken = function(){

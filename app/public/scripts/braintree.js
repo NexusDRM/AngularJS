@@ -47,6 +47,16 @@ braintree.client.create({
 			alert(hostedFieldsErr);
 			throw new Error(hostedFieldsErr);
     }
+    // (function(){
+    //   $.ajax({
+    //     method: "GET",
+    //     url: "http://homestead.app/getToken",
+    //     data: {user_id : window.localStorage.id}
+    //   })
+    //   .done(function(response){
+    //     window.localStorage.clientToken = response.data.clientToken;
+    //   });
+    // }());
 
     submit.removeAttribute('disabled');
 
@@ -64,9 +74,9 @@ braintree.client.create({
         // with AJAX.
         document.querySelector('input[name="payment-method-nonce"]').value = payload.nonce;
 				var amountFromClient = document.querySelector('input[name="amount"]').value;
-				console.log(amountFromClient);
+				// console.log(amountFromClient);
 				amountFromClient = (amountFromClient.toString() + ".00" );
-				console.log(amountFromClient);
+				// console.log(amountFromClient);
 				$.ajax({
 					method: "POST",
 					url: "http://homestead.app/processPayment",
@@ -74,7 +84,8 @@ braintree.client.create({
 								amount: amountFromClient}
 				})
 				.done(function(msg){
-					alert("Success");
+          $(location).attr("href", "/success");
+					alert("Success" + msg);
 				});
       });
     }, false);

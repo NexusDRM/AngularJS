@@ -104,18 +104,18 @@ app.controller('userController', ['$location', '$window', 'UserService', 'Logout
     vm.updateForm.updated_at = Date.now();
     var currentUserId = $window.localStorage.id;
     vm.currentUserId = currentUserId;
-    console.log(currentUserId);
+    // console.log(currentUserId);
 
 
     //UserService.getuserinfo is to prepopulate field placeholders with current user info
     UserService.getUserInfo()
         .then(function(response) {
             vm.form = {};
-            console.log(vm.form);
+            // console.log(vm.form);
             vm.form.currentUserId = currentUserId;
-            console.log(currentUserId);
+            // console.log(currentUserId);
             vm.form.user = response.data.results;
-            console.log(vm.form.user);
+            // console.log(vm.form.user);
             vm.newsletterOptIn = vm.form.user.newsletterOptIn;
             vm.title = vm.form.user.title;
             vm.firstName = vm.form.user.firstName;
@@ -148,10 +148,10 @@ app.controller('userController', ['$location', '$window', 'UserService', 'Logout
 
     vm.submit = function() {
       var data = vm.updateForm;
-      console.log(data);
+      // console.log(data);
         $http.put("http://homestead.app/updateUser", data)
             .then(function(response) {
-                console.log(response);
+                // console.log(response);
                 $window.location = 'user';
             });
     };
@@ -193,7 +193,7 @@ app.controller('adminController', ['$location', '$window', 'AdminService', 'User
             vm.form = {};
             vm.form.currentUserId = currentUserId;
             vm.form.user = response.data.results;
-            console.log(vm.form.user);
+            // console.log(vm.form.user);
             vm.newsletterOptIn = vm.form.user.newsletterOptIn;
             vm.title = vm.form.user.title;
             vm.firstName = vm.form.user.firstName;
@@ -229,7 +229,7 @@ app.controller('adminController', ['$location', '$window', 'AdminService', 'User
       // var user_id = $window.localStorage.id;
       $http.put("http://homestead.app/updateUser", data)
           .then(function(response) {
-              console.log(response);
+              // console.log(response);
               $window.location = 'admin';
           });
     };
