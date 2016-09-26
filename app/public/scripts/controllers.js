@@ -1,9 +1,9 @@
 'use strict';
 
 
-app.controller('headerController', ['$route', function($route) {
+app.controller('headerController', ['$route','LogoutService', function($route, LogoutService) {
     var vm = this;
-
+    vm.logOut = LogoutService.logOut;
 }]);
 
 app.controller('FooterController', ['$route', function($route) {

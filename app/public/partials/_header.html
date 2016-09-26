@@ -34,7 +34,16 @@
             <li><a href="http://nexusinfo.org/staff/">Staff</a></li>
             <li><a href="http://nexusinfo.org/contacts/">Contact Us</a></li>
 						<li>
-							<img src="../nexusDRMassets/Magnifying_glass_icon.svg.png" height="12px" width="12px"/>
+              <div class="btn-group">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><img src="../nexusDRMassets/Magnifying_glass_icon.svg.png" height="12px" width="12px"/>
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li><a href="/user">My Info</a></li>
+                    <li><a ng-click="HDC.logOut()">Log Out</a></li>
+                  </ul>
+
+
+              </div>
 						</li>
         </ul>
     </div>
