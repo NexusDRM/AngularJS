@@ -3,7 +3,7 @@
 app.service("SignUpService", ['$http', '$window','UserService', function($http, $window, UserService){
 	var sv = this;
 	//TODO: want to implement password checking
-
+	
 	sv.signup = function(form){
 		var data = JSON.stringify({
 			  email: form.email,
@@ -41,6 +41,7 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 	sv.register = function(){
 		$window.location='signup';
 	};
+	console.log('LoginService');
 	sv.login = function(data){
 		// console.log(data);
 		$http.post('//mysterious-dusk-96055.herokuapp.com/login', {
@@ -62,6 +63,7 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 
 app.service('LogoutService', ['$window', function($window){
 	var sv = this;
+	console.log('LogoutService');
 	sv.logOut = function(){
 		delete $window.localStorage.token;
 		delete $window.localStorage.clientToken;
@@ -71,6 +73,7 @@ app.service('LogoutService', ['$window', function($window){
 
 app.service('DonateService', ['$window', '$http', function($window, $http){
 	var sv = this;
+	console.log("DonateService");
 	// sv.process = function(data){
 	// 	console.log(data);
 	// 	$http.post('http://mysterious-dusk-96055.herokuapp.com/processPayment',{
@@ -105,7 +108,7 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 
 app.service('UserService', ['$window','$http', function($window,$http){
 	var sv = this;
-
+	console.log('UserService');
 	sv.getUserInfo = function(){
 		return $http.post("//mysterious-dusk-96055.herokuapp.com/getUser/",{
 			user_id : $window.localStorage.id
