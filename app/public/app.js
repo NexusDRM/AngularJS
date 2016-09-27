@@ -20,13 +20,10 @@ app.config(['$routeProvider', function($routeProvider){
 		.when('/logged-out', {
 			templateUrl: 'partials/loggedout.html'
 		})
-		.when('/success', {
-			templateUrl: 'partials/success.html'
-		})
-		.when('/admin', {
-			templateUrl: 'partials/admin.html',
-			controller: 'adminController as AC'
-		})
+		// .when('/admin', {
+		// 	templateUrl: 'partials/admin.html',
+		// 	controller: 'adminController as AC'
+		// })
 		.when('/user', {
 			templateUrl: 'partials/user.html',
 			controller: 'userController as UC'
