@@ -114,6 +114,7 @@ app.service('UserService', ['$window','$http', function($window,$http){
 
 	sv.ParseToken = function(){
 		var token = $window.localStorage.token;
+		console.log('token', token);
 		var arr = token.split('.');
 		var payload = arr[1];
 		var str = atob(payload);
