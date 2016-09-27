@@ -48,7 +48,7 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 			password: data.password
 		})
 		.then(function(response){
-			console.log(response.data.token);
+			console.log(response);
 			$window.localStorage.token = response.data.token;
 			$window.localStorage.id = UserService.ParseToken(response.data.token);
 			$window.location='donate';
