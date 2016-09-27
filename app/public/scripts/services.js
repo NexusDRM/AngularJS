@@ -41,18 +41,6 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 	sv.register = function(){
 		$window.location='signup';
 	};
-
-	sv.ParseToken = function(){
-		var token = $window.localStorage.token;
-		console.log('token', token);
-		var arr = token.split('.');
-		var payload = arr[1];
-		var str = atob(payload);
-		var obj = JSON.parse(str);
-		var id = obj["sub"];
-		return id;
-	};
-	
 	console.log('LoginService');
 	sv.login = function(data){
 		// console.log(data);
@@ -63,7 +51,7 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 		.then(function(response){
 			$window.localStorage.token = response.data.token;
 			console.log($window.localStorage.token);
-			$window.localStorage.id = sv.ParseToken(response.data.token);
+			$window.localStorage.id = UserService.ParseToken(response.data.token);
 			console.log($window.localStorage.id);
 			$window.location='donate';
 		})
@@ -127,16 +115,16 @@ app.service('UserService', ['$window','$http', function($window,$http){
 		});
 	};
 
-	// sv.ParseToken = function(){
-	// 	var token = $window.localStorage.token;
-	// 	console.log('token', token);
-	// 	var arr = token.split('.');
-	// 	var payload = arr[1];
-	// 	var str = atob(payload);
-	// 	var obj = JSON.parse(str);
-	// 	var id = obj["sub"];
-	// 	return id;
-	// };
+	sv.ParseToken = function(){
+		var token = $window.localStorage.token;
+		console.log('token', token);
+		var arr = token.split('.');
+		var payload = arr[1];
+		var str = atob(payload);
+		var obj = JSON.parse(str);
+		var id = obj["sub"];
+		return id;
+	};
 
 }]);
 
