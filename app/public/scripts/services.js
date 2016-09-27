@@ -67,6 +67,7 @@ app.service('LogoutService', ['$window', function($window){
 	sv.logOut = function(){
 		delete $window.localStorage.token;
 		delete $window.localStorage.clientToken;
+		delete $window.localStorage.id;
 		$window.location='logged-out';
 	};
 }]);
