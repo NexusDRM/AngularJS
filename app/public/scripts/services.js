@@ -41,9 +41,8 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 	sv.register = function(){
 		$window.location='signup';
 	};
-	console.log('LoginService');
 	sv.login = function(data){
-		console.log(data);
+		console.log(data.email, data.password);
 		$http.post('//mysterious-dusk-96055.herokuapp.com/login', {
 			email: data.email,
 			password: data.password
@@ -56,6 +55,7 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 			$window.location='donate';
 		})
 		.catch(function(err){
+			console.log(err);
 			throw new Error(err, 402);
 		});
 	};
