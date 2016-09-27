@@ -30,7 +30,7 @@ app.service("SignUpService", ['$http', '$window','UserService', function($http, 
         $window.location='donate';
       })
       .catch(function(err) {
-				alert(err);
+				alert('There was an error');
 				throw new Error(err, 402);
       });
 	};
@@ -56,7 +56,7 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 			$window.location='donate';
 		})
 		.catch(function(err){
-			alert(err);
+			alert('There was an error');
 			throw new Error(err, 402);
 		});
 	};
@@ -100,7 +100,7 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 			// console.log('derp');
 		})
 		.catch(function(err){
-			alert(err);
+			alert("There was an error");
 			throw new Error(err, 402);
 		});
 	};
