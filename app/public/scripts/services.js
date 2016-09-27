@@ -42,12 +42,13 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 		$window.location='signup';
 	};
 	sv.login = function(data){
-		console.log(data);
+		// console.log(data);
 		$http.post('//mysterious-dusk-96055.herokuapp.com/login', {
 			email: data.email,
 			password: data.password
 		})
 		.then(function(response){
+			console.log(response.data.token);
 			$window.localStorage.token = response.data.token;
 			$window.localStorage.id = UserService.ParseToken(response.data.token);
 			$window.location='donate';
