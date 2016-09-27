@@ -43,7 +43,7 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 	};
 	console.log('LoginService');
 	sv.login = function(data){
-		// console.log(data);
+		console.log(data);
 		$http.post('//mysterious-dusk-96055.herokuapp.com/login', {
 			email: data.email,
 			password: data.password
