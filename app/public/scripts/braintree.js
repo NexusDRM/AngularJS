@@ -47,16 +47,16 @@ braintree.client.create({
 			alert(hostedFieldsErr);
 			throw new Error(hostedFieldsErr);
     }
-    // (function(){
-    //   $.ajax({
-    //     method: "GET",
-    //     url: "http://mysterious-dusk-96055.herokuapp.com/getToken",
-    //     data: {user_id : window.localStorage.id}
-    //   })
-    //   .done(function(response){
-    //     window.localStorage.clientToken = response.data.clientToken;
-    //   });
-    // }());
+    (function(){
+      $.ajax({
+        method: "GET",
+        url: "http://mysterious-dusk-96055.herokuapp.com/getToken",
+        data: {user_id : window.localStorage.id}
+      })
+      .done(function(response){
+        window.localStorage.clientToken = response.data.clientToken;
+      });
+    }());
 
     submit.removeAttribute('disabled');
 
