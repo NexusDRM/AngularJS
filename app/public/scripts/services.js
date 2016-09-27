@@ -22,7 +22,7 @@ app.service("SignUpService", ['$http', '$window','UserService', function($http, 
       });
 			console.log(data);
 
-		$http.post('//nexusdrmapiv1-env.us-west-2.elasticbeanstalk.com/api/auth/signup', data)
+		$http.post('//mysterious-dusk-96055.herokuapp.com/api/auth/signup', data)
 			.then(function(response) {
 				console.log(response);
         $window.localStorage.token = response.data.token;
@@ -43,7 +43,7 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 	};
 	sv.login = function(data){
 		console.log(data);
-		$http.post('//nexusdrmapiv1-env.us-west-2.elasticbeanstalk.com/login', {
+		$http.post('//mysterious-dusk-96055.herokuapp.com/login', {
 			email: data.email,
 			password: data.password
 		})
@@ -71,7 +71,7 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 	var sv = this;
 	// sv.process = function(data){
 	// 	console.log(data);
-	// 	$http.post('http://nexusdrmapiv1-env.us-west-2.elasticbeanstalk.com/processPayment',{
+	// 	$http.post('http://mysterious-dusk-96055.herokuapp.com/processPayment',{
 	// 		nonce:data
 	// 	})
 	// 	.then(function(){
@@ -85,7 +85,7 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 
 	sv.getClientToken = function(){
 		// var jwt = $window.localStorage.token;
-		$http.get("//nexusdrmapiv1-env.us-west-2.elasticbeanstalk.com/getToken",{
+		$http.get("//mysterious-dusk-96055.herokuapp.com/getToken",{
 			user_id : $window.localStorage.id
 		})
 		.then(function(response){
@@ -105,7 +105,7 @@ app.service('UserService', ['$window','$http', function($window,$http){
 	var sv = this;
 
 	sv.getUserInfo = function(){
-		return $http.post("//nexusdrmapiv1-env.us-west-2.elasticbeanstalk.com/getUser/",{
+		return $http.post("//mysterious-dusk-96055.herokuapp.com/getUser/",{
 			user_id : $window.localStorage.id
 		});
 	};
@@ -125,7 +125,7 @@ app.service('UserService', ['$window','$http', function($window,$http){
 app.service('AdminService', ['$window', '$http', function($window,$http){
 	var sv = this;
 	sv.getUserInfo = function(id){
-		return $http.post("//nexusdrmapiv1-env.us-west-2.elasticbeanstalk.com/getUser/",{
+		return $http.post("//mysterious-dusk-96055.herokuapp.com/getUser/",{
 			user_id : id
 		});
 	};
