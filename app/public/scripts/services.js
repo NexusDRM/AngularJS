@@ -92,7 +92,7 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 
 	sv.getClientToken = function(){
 		// var jwt = $window.localStorage.token;
-		$http.post("//mysterious-dusk-96055.herokuapp.com/getToken",{
+		$http.get("//mysterious-dusk-96055.herokuapp.com/getToken",{
 			user_id : $window.localStorage.id
 		})
 		.then(function(response){
