@@ -22,7 +22,7 @@ app.service("SignUpService", ['$http', '$window','UserService','routeToApi', fun
       });
 			// console.log(data);
 
-		$http.post(routeToApi.url + '/api/auth/signup', data)
+		$http.post(routeToApi.url + '/signup', data)
 			.then(function(response) {
 				// console.log(response);
         $window.localStorage.token = response.data.token;
