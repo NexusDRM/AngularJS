@@ -85,7 +85,7 @@ braintree.client.create({
 				})
 				.done(function(msg){
           $(location).attr("href", "/success");
-					alert("Success" + msg);
+					alert("Success!");
 				});
       });
     }, false);
