@@ -54,7 +54,7 @@ app.controller('donateController', ['$document','$location', '$window', 'LogoutS
     //   var cvv = $document.getElementById('cvv');
     //   var expire = $document.getElementById('expiration-date');
     //
-    //   $http.post("http://mysterious-dusk-96055.herokuapp.com/processPayment", {
+    //   $http.post("//mysterious-dusk-96055.herokuapp.com/processPayment", {
     //
     //   })
     // };
@@ -149,7 +149,7 @@ app.controller('userController', ['$location', '$window', 'UserService', 'Logout
     vm.submit = function() {
       var data = vm.updateForm;
       // console.log(data);
-        $http.put("http://mysterious-dusk-96055.herokuapp.com/updateUser", data)
+        $http.put("//mysterious-dusk-96055.herokuapp.com/updateUser", data)
             .then(function(response) {
                 // console.log(response);
                 $window.location = 'user';
@@ -176,7 +176,7 @@ app.controller('adminController', ['$location', '$window', 'AdminService', 'User
     var currentUserId = $window.localStorage.id;
     vm.currentUserId = currentUserId;
     vm.logOut = LogoutService.logOut;
-    $http.post("http://mysterious-dusk-96055.herokuapp.com/getAllUsers", {
+    $http.post("//mysterious-dusk-96055.herokuapp.com/getAllUsers", {
             user_id: $window.localStorage.id
         })
         .then(function(response) {
