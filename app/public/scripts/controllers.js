@@ -43,7 +43,7 @@ app.controller('donateController', ['$scope','$document','$location', '$window',
     }
     vm.currentUserId = UserService.ParseToken();
     vm.form = {};
-    vm.form.amount = "20";
+    vm.form.amount = "100";
     vm.logOut = LogoutService.logOut;
     $scope.getToken = DonateService.getClientToken;
 
