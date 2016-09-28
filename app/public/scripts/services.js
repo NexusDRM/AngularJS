@@ -22,7 +22,7 @@ app.service("SignUpService", ['$http', '$window','UserService', function($http, 
       });
 			console.log(data);
 
-		$http.post('//mysterious-dusk-96055.herokuapp.com/api/auth/signup', data)
+		$http.post('https://mysterious-dusk-96055.herokuapp.com/api/auth/signup', data)
 			.then(function(response) {
 				console.log(response);
         $window.localStorage.token = response.data.token;
@@ -44,7 +44,7 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 	};
 	sv.login = function(data){
 		console.log(data.email, data.password);
-		$http.post('//mysterious-dusk-96055.herokuapp.com/login', {
+		$http.post('https://mysterious-dusk-96055.herokuapp.com/login', {
 			email: data.email,
 			password: data.password
 		})
@@ -78,7 +78,7 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 	console.log("DonateService");
 	// sv.process = function(data){
 	// 	console.log(data);
-	// 	$http.post('http://mysterious-dusk-96055.herokuapp.com/processPayment',{
+	// 	$http.post('http:https://mysterious-dusk-96055.herokuapp.com/processPayment',{
 	// 		nonce:data
 	// 	})
 	// 	.then(function(){
@@ -92,7 +92,7 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 
 	sv.getClientToken = function(){
 		// var jwt = $window.localStorage.token;
-		$http.get("//mysterious-dusk-96055.herokuapp.com/getToken",{
+		$http.get("https://mysterious-dusk-96055.herokuapp.com/getToken",{
 			user_id : $window.localStorage.id
 		})
 		.then(function(response){
@@ -113,7 +113,7 @@ app.service('UserService', ['$window','$http', function($window,$http){
 	var sv = this;
 	console.log('UserService');
 	sv.getUserInfo = function(){
-		return $http.post("//mysterious-dusk-96055.herokuapp.com/getUser/",{
+		return $http.post("https://mysterious-dusk-96055.herokuapp.com/getUser/",{
 			user_id : $window.localStorage.id
 		});
 	};
@@ -134,7 +134,7 @@ app.service('UserService', ['$window','$http', function($window,$http){
 app.service('AdminService', ['$window', '$http', function($window,$http){
 	var sv = this;
 	sv.getUserInfo = function(id){
-		return $http.post("//mysterious-dusk-96055.herokuapp.com/getUser/",{
+		return $http.post("https://mysterious-dusk-96055.herokuapp.com/getUser/",{
 			user_id : id
 		});
 	};
