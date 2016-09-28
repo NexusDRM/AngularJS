@@ -92,9 +92,12 @@ app.service('DonateService', ['$window', '$http','routeToApi', function($window,
 
 	sv.getClientToken = function(){
 		// var jwt = $window.localStorage.token;
-		$http.get(routeToApi.url + "/getToken/",{
-			user_id : $window.localStorage.id
-		})
+		$http.get(routeToApi.url + "/getToken/"
+		// ,
+		// {
+		// 	user_id : $window.localStorage.id
+		// }
+		)
 		.then(function(response){
 			$window.localStorage.clientToken = response.data.clientToken;
 			// console.log('derp');
