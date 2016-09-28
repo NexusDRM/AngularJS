@@ -50,7 +50,7 @@ braintree.client.create({
     // (function(){
     //   $.ajax({
     //     method: "GET",
-    //     url: "//mysterious-dusk-96055.herokuapp.com/getToken",
+    //     url: "https://mysterious-dusk-96055.herokuapp.com/getToken/",
     //     data: {user_id : window.localStorage.id}
     //   })
     //   .done(function(response){
@@ -79,7 +79,7 @@ braintree.client.create({
 				// console.log(amountFromClient);
 				$.ajax({
 					method: "POST",
-					url: "//mysterious-dusk-96055.herokuapp.com/processPayment",
+					url: "https://mysterious-dusk-96055.herokuapp.com/processPayment/",
 					data: {payload: payload.nonce,
 								amount: amountFromClient}
 				})
