@@ -36,59 +36,16 @@ app.controller('signupController', ['SignUpService', function(SignUpService) {
     };
 }]);
 
-app.controller('donateController', ['$document','$location', '$window', 'LogoutService', 'DonateService', 'UserService', function($document,$location, $window, LogoutService, DonateService, UserService) {
+app.controller('donateController', ['$scope','$document','$location', '$window', 'LogoutService', 'DonateService', 'UserService', function($scope,$document,$location, $window, LogoutService, DonateService, UserService) {
     var vm = this;
     if (!$window.localStorage.token) {
         $location.path('/');
     }
     vm.currentUserId = UserService.ParseToken();
     vm.form = {};
-    function getToken (){
-      DonateService.getClientToken();
-      vm.clientToken = $window.localStorage.clientToken;
-    }
-    getToken();
-
-    // vm.process = function(){
-    //   var creditCard = $document.getElementById('credit-card-number');
-    //   var cvv = $document.getElementById('cvv');
-    //   var expire = $document.getElementById('expiration-date');
-    //
-    //   $http.post(routeToApi.url + "/processPayment", {
-    //
-    //   })
-    // };
+    vm.form.amount = "20";
     vm.logOut = LogoutService.logOut;
-
-    //--------------------Placeholder code for sub feature of Laravel---------------------------
-    // console.log(vm.clientToken);
-    // vm.currentDate = Date.now();
-    // vm.maxFutureDate = new Date();
-    // vm.maxFutureDate.setDate(vm.maxFutureDate.getDate() + 30);
-    // vm.futureDate = $window.setFutureDate;
-    // vm.processPayment = function() {
-    //     vm.form.nonce = $window.localStorage.nonce;
-    //     console.log("form data being passed to DS.process", vm.form);
-    //     DonateService.process(vm.form);
-    // };
-    //if user is not logged in we want them to be so this redirs to login
-    //----attempted braintree-angular integration ------
-
-    // $document.ready(function(){
-    //   console.log('ready function');
-    //   vm.number = document.getElementById('card-number');
-    //   vm.cvv = document.getElementById('cvv');
-    //   vm.expiration = document.getElementById('expiration-date');
-    //
-    // 	vm.number.setAttribute("ng-model", "DC.form.number");
-    // 	vm.cvv.setAttribute("ng-model", 'DC.form.cvv');
-    // 	vm.expiration.setAttribute("ng-model", "DC.form.expire");
-    // });
-
-    // function setAttributes(){
-    //
-    //   $compile(vm.number, vm.cvv, vm.expiration);
-    // }
+    $scope.getToken = DonateService.getClientToken;
 
 
 }]);
@@ -105,7 +62,6 @@ app.controller('userController', ['$location', '$window', 'UserService', 'Logout
     var currentUserId = $window.localStorage.id;
     vm.currentUserId = currentUserId;
     // console.log(currentUserId);
-
 
     //UserService.getuserinfo is to prepopulate field placeholders with current user info
     UserService.getUserInfo()

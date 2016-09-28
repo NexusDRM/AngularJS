@@ -37,7 +37,7 @@ app.service("SignUpService", ['$http', '$window','UserService','routeToApi', fun
 
 }]);
 
-app.service("LoginService", ['$http', '$window','UserService','routeToApi', function($http, $window, UserService,routeToApi){
+app.service("LoginService", ['$http', '$window','UserService','routeToApi','DonateService', function($http, $window, UserService,routeToApi, DonateService){
 	var sv = this;
 	sv.register = function(){
 		$window.location='signup';
@@ -50,9 +50,11 @@ app.service("LoginService", ['$http', '$window','UserService','routeToApi', func
 		})
 		.then(function(response){
 			$window.localStorage.token = response.data.token;
-			// console.log($window.localStorage.token);
+
 			$window.localStorage.id = UserService.ParseToken(response.data.token);
-			// console.log($window.localStorage.id);
+
+	    // DonateService.getClientToken();
+
 			$window.location='donate';
 		})
 		.catch(function(err){
@@ -75,24 +77,11 @@ app.service('LogoutService', ['$window', function($window){
 
 app.service('DonateService', ['$window', '$http','routeToApi', function($window, $http, routeToApi){
 	var sv = this;
-	// console.log("DonateService");
-	// sv.process = function(data){
-	// 	console.log(data);
-	// 	$http.post(routeToApi.url + '/processPayment',{
-	// 		nonce:data
-	// 	})
-	// 	.then(function(){
-	// 		$window.location='success';
-	// 	})
-	// 	.catch(function(err){
-	// 		throw new Error(err);
-	// 	});
-	// };
 
 
 	sv.getClientToken = function(){
 		// var jwt = $window.localStorage.token;
-		$http.get(routeToApi.url + "/getToken"
+		return $http.get(routeToApi.url + "/getToken"
 		// ,
 		// {
 		// 	user_id : $window.localStorage.id
@@ -101,9 +90,11 @@ app.service('DonateService', ['$window', '$http','routeToApi', function($window,
 		.then(function(response){
 			$window.localStorage.clientToken = response.data.clientToken;
 			// console.log('derp');
+			return Promise.resolve(response.data.clientToken);
 		})
 		.catch(function(err){
-			alert("There was an error");
+			console.log(err);
+			// alert("There was an error");
 			throw new Error(err, 402);
 		});
 	};
