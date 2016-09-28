@@ -3,7 +3,7 @@
 var app = angular.module('nexusDRM', ['ngRoute']);
 
 app.constant("routeToApi", {
-	"url": "http://mysterious-dusk-96055.herokuapp.com/"
+	"url": "http://mysterious-dusk-96055.herokuapp.com"
 });
 
 app.config(['$routeProvider', function($routeProvider){
