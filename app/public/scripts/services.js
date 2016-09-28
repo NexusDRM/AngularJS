@@ -44,7 +44,7 @@ app.service("LoginService", ['$http', '$window','UserService','routeToApi', func
 	};
 	sv.login = function(data){
 		// console.log(data.email, data.password);
-		$http.post(routeToApi.url + '/login/', {
+		$http.post(routeToApi.url + '/login', {
 			email: data.email,
 			password: data.password
 		})
@@ -92,7 +92,7 @@ app.service('DonateService', ['$window', '$http','routeToApi', function($window,
 
 	sv.getClientToken = function(){
 		// var jwt = $window.localStorage.token;
-		$http.get(routeToApi.url + "/getToken/"
+		$http.get(routeToApi.url + "/getToken"
 		// ,
 		// {
 		// 	user_id : $window.localStorage.id
@@ -116,7 +116,7 @@ app.service('UserService', ['$window','$http','routeToApi', function($window,$ht
 	var sv = this;
 	// console.log('UserService');
 	sv.getUserInfo = function(){
-		return $http.post(routeToApi.url + "/getUser/",{
+		return $http.post(routeToApi.url + "/getUser",{
 			user_id : $window.localStorage.id
 		});
 	};
@@ -137,7 +137,7 @@ app.service('UserService', ['$window','$http','routeToApi', function($window,$ht
 app.service('AdminService', ['$window', '$http','routeToApi', function($window,$http,routeToApi){
 	var sv = this;
 	sv.getUserInfo = function(id){
-		return $http.post(routeToApi.url + "/getUser/",{
+		return $http.post(routeToApi.url + "/getUser",{
 			user_id : id
 		});
 	};

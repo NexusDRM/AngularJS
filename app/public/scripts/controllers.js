@@ -149,7 +149,7 @@ app.controller('userController', ['$location', '$window', 'UserService', 'Logout
     vm.submit = function() {
       var data = vm.updateForm;
       // console.log(data);
-        $http.put(routeToApi.url + "/updateUser/", data)
+        $http.put(routeToApi.url + "/updateUser", data)
             .then(function(response) {
                 // console.log(response);
                 $window.location = 'user';
@@ -176,7 +176,7 @@ app.controller('adminController', ['$location', '$window', 'AdminService', 'User
     var currentUserId = $window.localStorage.id;
     vm.currentUserId = currentUserId;
     vm.logOut = LogoutService.logOut;
-    $http.post(routeToApi.url + "/getAllUsers/", {
+    $http.post(routeToApi.url + "/getAllUsers", {
             user_id: $window.localStorage.id
         })
         .then(function(response) {
@@ -227,7 +227,7 @@ app.controller('adminController', ['$location', '$window', 'AdminService', 'User
     vm.submit = function(){
       var data = vm.updateForm;
       // var user_id = $window.localStorage.id;
-      $http.put(routeToApi.url + "/updateUser/", data)
+      $http.put(routeToApi.url + "/updateUser", data)
           .then(function(response) {
               // console.log(response);
               $window.location = 'admin';
