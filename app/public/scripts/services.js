@@ -30,7 +30,7 @@ app.service("SignUpService", ['$http', '$window','UserService','routeToApi', fun
         $window.location='donate';
       })
       .catch(function(err) {
-				alert('There was an error');
+				alert('There was an error: make sure email is not already in use.');
 				throw new Error(err, 402);
       });
 	};
