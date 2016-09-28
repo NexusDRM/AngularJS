@@ -2,6 +2,9 @@
 
 var app = angular.module('nexusDRM', ['ngRoute']);
 
+app.constant("routeToApi", {
+	"url": "https://mysterious-dusk-96055.herokuapp.com/"
+});
 
 app.config(['$routeProvider', function($routeProvider){
 	$routeProvider

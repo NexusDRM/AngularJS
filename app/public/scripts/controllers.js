@@ -54,7 +54,7 @@ app.controller('donateController', ['$document','$location', '$window', 'LogoutS
     //   var cvv = $document.getElementById('cvv');
     //   var expire = $document.getElementById('expiration-date');
     //
-    //   $http.post("https://mysterious-dusk-96055.herokuapp.com/processPayment/", {
+    //   $http.post(routeToApi.url + "/processPayment/", {
     //
     //   })
     // };
@@ -94,7 +94,7 @@ app.controller('donateController', ['$document','$location', '$window', 'LogoutS
 }]);
 
 
-app.controller('userController', ['$location', '$window', 'UserService', 'LogoutService', '$http', function($location, $window, UserService, LogoutService, $http) {
+app.controller('userController', ['$location', '$window', 'UserService', 'LogoutService', '$http',"routeToApi", function($location, $window, UserService, LogoutService, $http, routeToApi) {
     var vm = this;
 
     //updateForm is filled with creamy goodness and then passed long with vm.submit to update user
@@ -149,7 +149,7 @@ app.controller('userController', ['$location', '$window', 'UserService', 'Logout
     vm.submit = function() {
       var data = vm.updateForm;
       // console.log(data);
-        $http.put("https://mysterious-dusk-96055.herokuapp.com/updateUser/", data)
+        $http.put(routeToApi.url + "/updateUser/", data)
             .then(function(response) {
                 // console.log(response);
                 $window.location = 'user';
@@ -167,7 +167,7 @@ app.controller('userController', ['$location', '$window', 'UserService', 'Logout
 
 }]);
 
-app.controller('adminController', ['$location', '$window', 'AdminService', 'UserService', 'LogoutService', '$http', function($location, $window, AdminService, UserService, LogoutService, $http) {
+app.controller('adminController', ['$location', '$window', 'AdminService', 'UserService', 'LogoutService', '$http','routeToApi', function($location, $window, AdminService, UserService, LogoutService, $http, routeToApi) {
     var vm = this;
     vm.updateForm = {};
     vm.userToModify = {};
@@ -176,7 +176,7 @@ app.controller('adminController', ['$location', '$window', 'AdminService', 'User
     var currentUserId = $window.localStorage.id;
     vm.currentUserId = currentUserId;
     vm.logOut = LogoutService.logOut;
-    $http.post("https://mysterious-dusk-96055.herokuapp.com/getAllUsers/", {
+    $http.post(routeToApi.url + "/getAllUsers/", {
             user_id: $window.localStorage.id
         })
         .then(function(response) {
@@ -227,7 +227,7 @@ app.controller('adminController', ['$location', '$window', 'AdminService', 'User
     vm.submit = function(){
       var data = vm.updateForm;
       // var user_id = $window.localStorage.id;
-      $http.put("https://mysterious-dusk-96055.herokuapp.com/updateUser/", data)
+      $http.put(routeToApi.url + "/updateUser/", data)
           .then(function(response) {
               // console.log(response);
               $window.location = 'admin';
