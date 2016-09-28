@@ -58,7 +58,7 @@ app.service("LoginService", ['$http', '$window','UserService','routeToApi','Dona
 			$window.location='donate';
 		})
 		.catch(function(err){
-			alert('There was an error');
+			alert('There was an error: wrong email or password');
 			throw new Error(err, 402);
 		});
 	};
