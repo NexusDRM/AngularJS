@@ -54,7 +54,7 @@ app.controller('donateController', ['$document','$location', '$window', 'LogoutS
     //   var cvv = $document.getElementById('cvv');
     //   var expire = $document.getElementById('expiration-date');
     //
-    //   $http.post(routeToApi.url + "/processPayment/", {
+    //   $http.post(routeToApi.url + "/processPayment", {
     //
     //   })
     // };
