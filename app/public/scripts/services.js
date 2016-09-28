@@ -20,11 +20,11 @@ app.service("SignUpService", ['$http', '$window','UserService', function($http, 
 				newsletterOptIn: form.newsletterOptIn || null,
 				is_admin: form.is_admin || null
       });
-			console.log(data);
+			// console.log(data);
 
 		$http.post('//mysterious-dusk-96055.herokuapp.com/api/auth/signup', data)
 			.then(function(response) {
-				console.log(response);
+				// console.log(response);
         $window.localStorage.token = response.data.token;
 				$window.localStorage.id = UserService.ParseToken(response.data.token);
         $window.location='donate';
@@ -43,16 +43,16 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 		$window.location='signup';
 	};
 	sv.login = function(data){
-		console.log(data.email, data.password);
+		// console.log(data.email, data.password);
 		$http.post('//mysterious-dusk-96055.herokuapp.com/login/', {
 			email: data.email,
 			password: data.password
 		})
 		.then(function(response){
 			$window.localStorage.token = response.data.token;
-			console.log($window.localStorage.token);
+			// console.log($window.localStorage.token);
 			$window.localStorage.id = UserService.ParseToken(response.data.token);
-			console.log($window.localStorage.id);
+			// console.log($window.localStorage.id);
 			$window.location='donate';
 		})
 		.catch(function(err){
@@ -64,7 +64,7 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 
 app.service('LogoutService', ['$window', function($window){
 	var sv = this;
-	console.log('LogoutService');
+	// console.log('LogoutService');
 	sv.logOut = function(){
 		delete $window.localStorage.token;
 		delete $window.localStorage.clientToken;
@@ -75,7 +75,7 @@ app.service('LogoutService', ['$window', function($window){
 
 app.service('DonateService', ['$window', '$http', function($window, $http){
 	var sv = this;
-	console.log("DonateService");
+	// console.log("DonateService");
 	// sv.process = function(data){
 	// 	console.log(data);
 	// 	$http.post('//mysterious-dusk-96055.herokuapp.com/processPayment',{
@@ -111,7 +111,7 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 
 app.service('UserService', ['$window','$http', function($window,$http){
 	var sv = this;
-	console.log('UserService');
+	// console.log('UserService');
 	sv.getUserInfo = function(){
 		return $http.post("//mysterious-dusk-96055.herokuapp.com/getUser/",{
 			user_id : $window.localStorage.id
@@ -120,7 +120,7 @@ app.service('UserService', ['$window','$http', function($window,$http){
 
 	sv.ParseToken = function(){
 		var token = $window.localStorage.token;
-		console.log('token', token);
+		// console.log('token', token);
 		var arr = token.split('.');
 		var payload = arr[1];
 		var str = atob(payload);
