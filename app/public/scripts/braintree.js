@@ -50,7 +50,7 @@ braintree.client.create({
     // (function(){
     //   $.ajax({
     //     method: "GET",
-    //     url: "http://mysterious-dusk-96055.herokuapp.com/getToken",
+    //     url: "https://mysterious-dusk-96055.herokuapp.com/getToken",
     //     data: {user_id : window.localStorage.id}
     //   })
     //   .done(function(response){

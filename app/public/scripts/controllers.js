@@ -227,7 +227,7 @@ app.controller('adminController', ['$location', '$window', 'AdminService', 'User
     vm.submit = function(){
       var data = vm.updateForm;
       // var user_id = $window.localStorage.id;
-      $http.put("http://mysterious-dusk-96055.herokuapp.com/updateUser", data)
+      $http.put("https://mysterious-dusk-96055.herokuapp.com/updateUser", data)
           .then(function(response) {
               // console.log(response);
               $window.location = 'admin';
