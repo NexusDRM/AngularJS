@@ -44,7 +44,7 @@ app.service("LoginService", ['$http', '$window','UserService', function($http, $
 	};
 	sv.login = function(data){
 		console.log(data.email, data.password);
-		$http.post('//mysterious-dusk-96055.herokuapp.com/login', {
+		$http.post('//mysterious-dusk-96055.herokuapp.com/login/', {
 			email: data.email,
 			password: data.password
 		})
@@ -92,7 +92,7 @@ app.service('DonateService', ['$window', '$http', function($window, $http){
 
 	sv.getClientToken = function(){
 		// var jwt = $window.localStorage.token;
-		$http.get("//mysterious-dusk-96055.herokuapp.com/getToken",{
+		$http.get("//mysterious-dusk-96055.herokuapp.com/getToken/",{
 			user_id : $window.localStorage.id
 		})
 		.then(function(response){
